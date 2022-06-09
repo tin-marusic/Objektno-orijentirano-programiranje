@@ -112,6 +112,30 @@
                  "width":64,
                  "x":322,
                  "y":452
+                }, 
+                {
+                 "gid":34,
+                 "height":32,
+                 "id":10,
+                 "name":"metak4",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1228,
+                 "y":116
+                }, 
+                {
+                 "gid":34,
+                 "height":32,
+                 "id":11,
+                 "name":"metak5",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":978,
+                 "y":112
                 }],
          "opacity":1,
          "properties":[
@@ -144,7 +168,7 @@
          "y":0
         }],
  "nextlayerid":6,
- "nextobjectid":10,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",

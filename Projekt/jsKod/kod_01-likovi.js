@@ -23,7 +23,7 @@ class Lik extends Sprite {
       if (!this.jumping) {
   
         this.jumping = true;
-        this.velocity_y -= h;
+        this.velocity_y = -h;
   
       }
     }
@@ -62,11 +62,11 @@ class GlavniLik extends Lik{
       }
     moveUp() {
         this.direction = 0;
-        this.velocity_y = -5;
+        this.velocity_y = -4;
       }
     moveDown() {
         this.direction = 180;
-        this.velocity_y = 5;
+        this.velocity_y = 4;
       }
     start(){ 
         this.x = 0; 
@@ -100,7 +100,7 @@ class GlavniLik extends Lik{
       }
       else{}
       let x = this.x +32 ; //postavljamo na centar lika
-      let y = this.y + 32 ;
+      let y = this.y + 23 ;
       g.vidljivost(x,y,s,this.velocity_x);
     }
 
@@ -110,14 +110,24 @@ class Skale extends Item{
     constructor(layer){
       super(layer);
       this.visible = true;
+      this.gornje_skale = false; // postavljamo klasu za najgornje skale
     }
     start(x,y){
       this.x = x;
       this.y =y;
     }
-    updatePosition() {
+    updatePosition() { //položaj se ne mijenja
       this.x_old = this.x;
       this.y_old = this.y;
+    }
+    polozaj_skale(x){
+      if(this.gornje_skale === true){
+        let y = x - this.y; //razlika između položaja lika na skalama i vrha skala
+        return y
+      }
+      else{
+        return -1 //vraćamo vrijednost da je lik iznad skala ako nije na najgornjim skalama
+      }
     }
 }
 
@@ -159,10 +169,14 @@ class Metak extends Item{
   updatePosition() { //ukida gravitaciju i usporavanje
     this.x_old = this.x;
     this.x += this.velocity_x;
+    this.y_old = this.y;
+    this.y += this.velocity_y;
     this.g += 1;
-    if(this.velocity_x < 1 && this.velocity_x >-1){ //kad metak dotakne nešto maknemo ga
+    if(this.velocity_x < 10.5 && this.velocity_x >-10.5){ //kad metak dotakne nešto maknemo ga
       this.makni()
-      //dodat za y os
+    }
+    else if(this.velocity_y < -0.01 || this.velocity_y > 0.01){
+      this.makni(); //da metak ne zaobilazi platforme
     }
 
   }
