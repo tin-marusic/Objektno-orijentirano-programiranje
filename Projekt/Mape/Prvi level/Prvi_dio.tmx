@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="20" height="14" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="6">
+ <editorsettings>
+  <export target="../../Prvi_dio_1.js" format="js"/>
+ </editorsettings>
+ <tileset firstgid="1" name="trcanje_lijevo_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika1-removebg-preview.png" width="64" height="67"/>
+ </tileset>
+ <tileset firstgid="2" name="trcanje_lijevo_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika2-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="3" name="trcanje_lijevo_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika3-removebg-preview.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="4" name="trcanje_lijevo_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika4-removebg-preview.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="5" name="trcanje_lijevo_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika5-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="6" name="trcanje_lijevo_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika6-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="7" name="trcanje_lijevo_7" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika7-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="8" name="trcanje_lijevo_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika8-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="trcanje_lijevo_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika9-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="10" name="trcanje_lijevo__10" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="slika_10-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="11" name="pozadina" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="pozadina.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="12" name="Trcanje_desno_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_1.png" width="64" height="67"/>
+ </tileset>
+ <tileset firstgid="13" name="Trcanje_desno_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_2.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="14" name="Trcanje_desno_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_3.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="15" name="Trcanje_desno_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_4.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="16" name="Trcanje_desno_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_5.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="17" name="Trcanje_desno_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_6.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="18" name="Trcanje_desno_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_7.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="19" name="Trcanje_desno_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_8.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="20" name="Trcanje_desno_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_9.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="21" name="Trcanje_desno_91" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="Trcanje_desno_91.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="22" name="Platforme" tilewidth="64" tileheight="64" spacing="2" tilecount="2" columns="2">
+  <image source="platforme.png" width="130" height="64"/>
+ </tileset>
+ <tileset firstgid="24" name="šiljci" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="platforma_šiljci.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="25" name="skale" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skale.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="26" name="skok_igrac" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skok-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="27" name="skok2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skok_3-removebg-preview.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="28" name="skok_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skok_1desno.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="29" name="skok1_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skok_3desno.png" width="64" height="65"/>
+ </tileset>
+ <tileset firstgid="30" name="skale_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skale_1-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="31" name="skale_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skale_2-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="32" name="skale_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skale_3-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="33" name="skale_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="skale_4-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="34" name="metak" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="metak-removebg-preview.png" width="32" height="32"/>
+ </tileset>
+ <layer id="3" name="Pozadina" width="20" height="14">
+  <data encoding="csv">
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
+11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11
+</data>
+ </layer>
+ <layer id="4" name="Platforme" width="20" height="14">
+  <data encoding="csv">
+23,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+23,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+22,22,22,22,0,0,0,0,0,0,0,0,22,22,22,22,22,22,22,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,22,22,22,22,22,22,22,0,0,0,0,0,0,0,0,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,22,22,22,22,22,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+22,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,22,22,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+23,23,0,0,0,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23
+</data>
+ </layer>
+ <objectgroup id="5" name="stvari">
+  <properties>
+   <property name="class" value="items"/>
+  </properties>
+  <object id="1" name="skale" gid="25" x="256" y="452" width="64" height="64"/>
+  <object id="2" name="siljci" gid="24" x="194" y="452" width="64" height="64"/>
+  <object id="5" name="metak" gid="34" x="340" y="438" width="32" height="32"/>
+ </objectgroup>
+ <layer id="2" name="Glavni lik" width="20" height="14">
+  <properties>
+   <property name="class" value="GlavniLik"/>
+  </properties>
+  <data encoding="csv">
+12,13,14,15,16,17,18,19,20,21,26,27,28,29,30,31,33,32,0,0,
+1,2,3,4,5,6,7,8,9,10,0,0,0,0,0,0,0,0,0,0,
+26,26,26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>
