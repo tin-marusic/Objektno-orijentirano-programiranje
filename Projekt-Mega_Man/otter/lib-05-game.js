@@ -298,7 +298,7 @@ class Sprite extends GameWorldObjectAnimator {
       //ako skace i puca desno
       else if(this.velocity_x > 0) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
       //ako skace i puca lijevo
-      else if(this.velocity_x < 0) this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
+      else this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
     }
     // ako je lik okrenut desno
     else if (this.direction == 90) {
@@ -323,14 +323,14 @@ class Sprite extends GameWorldObjectAnimator {
     }
     else if(this.penjanje_skale){
       //za penjanje po skalama
-      if(this.velocity_y < -0.1 || this.velocity_y > 0.1)this.changeFrameSet(this.frameSets("skale"), "loop", 3);
+      if(this.velocity_y < -2.5 || this.velocity_y > 2.5)this.changeFrameSet(this.frameSets("skale"), "loop", 3);
       // pucanje na skalama u desno
-      else if(this.pucanje && this.velocity_x > 0)   this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+      else if(this.pucanje && this.velocity_x >= 0)   this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
       //pucanje na skalama u lijevo
       else if(this.pucanje && this.velocity_x < 0)   this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
       // ako ne puca samo određujemo stranu na koju će lik gledat kad stoji na skalama
-      else if(this.velocity_x > 0) this.changeFrameSet(this.frameSets("right"), "pause");
-      else this.changeFrameSet(this.frameSets("left"), "pause");
+      else if(this.velocity_x >= 0) this.changeFrameSet(this.frameSets("skale_stoji"), "pause");
+      else this.changeFrameSet(this.frameSets("skale_stoji"), "pause");
     }
     else if (this.direction == 180) {
       if (this.velocity_y > 0.1) this.changeFrameSet(this.frameSets("walk-down"), "loop", 10);
@@ -582,6 +582,7 @@ class PlatformCollider {
    * @param {number} tile_bottom y koorinata dna
    * @returns {boolean}
    */
+  
   collidePlatformBottom(sprite, tile_bottom) {
 
     if (sprite.top < tile_bottom && sprite.oldTop >= tile_bottom) {

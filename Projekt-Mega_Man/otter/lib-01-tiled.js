@@ -1,4 +1,4 @@
-/// <reference path="../otter/lib-00-GameSettings.js"/>
+/// <reference path="./lib-00-GameSettings.js"/>
 
 /**
  * Klasa: Tiled

@@ -1,9 +1,9 @@
-/// <reference path="../otter/lib-00-GameSettings.js"/>
-/// <reference path="../otter/lib-01-tiled.js"/>
-/// <reference path="../otter/lib-02-sensing.js"/>
-/// <reference path="../otter/lib-03-display.js"/>
-/// <reference path="../otter/lib-04-engine.js"/>
-/// <reference path="../otter/lib-05-game.js"/>
+/// <reference path="./lib-00-GameSettings.js"/>
+/// <reference path="./lib-01-tiled.js"/>
+/// <reference path="./lib-02-sensing.js"/>
+/// <reference path="./lib-03-display.js"/>
+/// <reference path="./lib-04-engine.js"/>
+/// <reference path="./lib-05-game.js"/>
 
 /** @type {Sensing} */
 var SENSING = null;

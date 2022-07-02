@@ -18,7 +18,7 @@ class Lik extends Sprite {
       this.visible = true;
     }
   
-    jump(h = 50) {
+    jump(h = 35) {
   
       if (!this.jumping) {
   
@@ -34,21 +34,22 @@ class GlavniLik extends Lik{
     constructor(layer){
         super(0,0,layer);
         this.frame_sets={
-            "up": [11],
-            "up_l": [13],
-            "walk-up": [12],
-            "walk_l-up": [14],
-            "right": [44],
-            "right_pucanje": [46],
-            "walk-right": [1,2, 3, 4, 5, 6, 7, 8,9],
-            "walk-right_pucanje": [81,82,83,84,85,86,87,88,89],
-            "down": [10],
-            "walk-down": [11,12],
-            "left": [45],
-            "left_pucanje": [47],
-            "walk-left": [21, 22, 23, 24, 25, 26,27,28,29],
-            "walk-left_pucanje": [61,62,63,64,65,66,67,68,69],
-            "skale":[15,16,17,18],
+            "up": [31],
+            "up_l": [33],
+            "walk-up": [32],
+            "walk_l-up": [34],
+            "right": [64],
+            "right_pucanje": [66],
+            "walk-right": [21,22, 23, 24, 25, 26, 27, 28,29],
+            "walk-right_pucanje": [101,102,103,104,105,106,107,108,109],
+            "down": [30],
+            "walk-down": [31,32],
+            "left": [65],
+            "left_pucanje": [67],
+            "walk-left": [41, 42, 43, 44, 45, 46,47,48,49],
+            "walk-left_pucanje": [81,82,83,84,85,86,87,88,89],
+            "skale":[35,36,37,38],
+            "skale_stoji":[35]
         };
         this.okvir = true;
         this.gravity = 2;
@@ -72,10 +73,32 @@ class GlavniLik extends Lik{
         this.direction = 180;
         this.velocity_y = 4;
       }
-    start(){ 
-        this.x = 0; 
-        this.y = 6*64; 
+    start(x,y){ 
+        this.x = x; 
+        this.y = y; 
       } 
+    change_map1(){  //prebacujemo na mapu iznad
+      if (GAME.activeWorldMap.name == "Prvi_dio_1"){
+        GAME.setActiveWorldMap("Drugi_dio_1");
+        btnSetupGame.dispatchEvent(levelupEvent1); //pozivamo setup za tu mapu
+      }
+      else if (GAME.activeWorldMap.name == "Drugi_dio_1"){
+        GAME.setActiveWorldMap("Treci_dio_1");
+        btnSetupGame.dispatchEvent(levelupEvent2); //pozivamo setup za tu mapu
+      }
+    }
+
+    change_map2(){ //prebacujemo na mapu ispod
+      if (GAME.activeWorldMap.name == "Drugi_dio_1"){
+        GAME.setActiveWorldMap("Prvi_dio_1");
+        btnSetupGame.dispatchEvent(leveldownEvent1); //pozivamo setup za tu mapu       
+      }
+      else if (GAME.activeWorldMap.name == "Treci_dio_1"){
+        GAME.setActiveWorldMap("Drugi_dio_1");
+        btnSetupGame.dispatchEvent(leveldownEvent2); //pozivamo setup za tu mapu       
+      }
+    }
+
     updatePosition() {
         this.x_old = this.x;
         this.y_old = this.y;
@@ -85,6 +108,12 @@ class GlavniLik extends Lik{
     
         this.velocity_x *= this.friction;
         this.velocity_y *= this.friction;
+        if(this.y < 0.7*64){ //izlaz s mape s gornje strane
+          this.change_map1(); 
+        }
+        else if(this.y > 14.5*64){ //izlaz s mape s donje strane
+          this.change_map2();
+        }
       }
     no_gravity(){
       this.gravity = 0;
@@ -193,6 +222,26 @@ class Metak extends Item{
       this.velocity_y = 0;
   }
  
+}
+
+class platforma_nevidljiva extends Item{
+  constructor(layer){
+    super(layer);
+    this.visible = false;
+  }
+  updatePosition() { //položaj se ne mijenja
+    this.x_old = this.x;
+    this.y_old = this.y;
+  }
+
+  start(x,y){
+    this.x = x;
+    this.y =y;
+  }
+
+  postani_vidljiv(){
+    this.visible = true;
+  }
 }
 
 
