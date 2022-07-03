@@ -6,7 +6,7 @@ class Postavke {
       }
     }
   
-    static glavni = null;
+    static GlavniLik = null;
     static s1;
     static s2;
     static s3;
@@ -32,4 +32,7 @@ class Postavke {
     static m5;
     static platforma1;
     static platforma2;
+    static spike1;
+    static spike2;
+    static spike3;
 }

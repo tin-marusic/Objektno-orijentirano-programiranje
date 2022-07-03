@@ -246,6 +246,9 @@ class Sprite extends GameWorldObjectAnimator {
     this.okvir = false;
     this.penjanje_skale = false; //animacije za penjanje po skalama
     this.pucanje = false; //animacije za pucanje lika
+    this.pucanje_skale_l = false; //pucanje na skalama - animacije
+    this.pucanje_skale_d = false;
+    this.on_top = false; //animacija na vrhu skala
 
   }
 
@@ -285,65 +288,32 @@ class Sprite extends GameWorldObjectAnimator {
   /**
    * Osvježava animacije ovisno o smjeru i brzini lika.
    */
-  updateAnimation() {
-    if (this.jumping && !this.penjanje_skale) {
-      if(!this.pucanje){
-        //ako skače i ne puca
-        if (this.velocity_y < -0.1 && this.velocity_x > 0) this.changeFrameSet(this.frameSets("walk_l-up"), "pause");
-        else if (this.velocity_y < -0.1 && this.velocity_x < 0) this.changeFrameSet(this.frameSets("walk-up"), "pause");
-        else if (this.velocity_y > 0.1 && this.velocity_x < 0) this.changeFrameSet(this.frameSets("up"), "pause");
-        else if(this.velocity_y > 0.1 && this.velocity_x > 0) this.changeFrameSet(this.frameSets("up_l"), "pause");
-        else this.changeFrameSet(this.frameSets("right"), "pause");
-      }
-      //ako skace i puca desno
-      else if(this.velocity_x > 0) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
-      //ako skace i puca lijevo
-      else this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
+   updateAnimation() {
+
+    if (this.direction == 0) {
+      if (this.velocity_y < -0.1) this.changeFrameSet(this.frameSets("walk-up"), "loop", 5);
+      else this.changeFrameSet(this.frameSets("up"), "pause");
     }
     // ako je lik okrenut desno
     else if (this.direction == 90) {
       // ako ima brzinu po x, onda rotiraj animacije koje postoje za walk-right
-      if (this.velocity_x > 1.8 && !this.pucanje) this.changeFrameSet(this.frameSets("walk-right"), "loop", 3);
-     // ako trci i puca 
-      else if (this.velocity_x > 1.8 && this.pucanje) this.changeFrameSet(this.frameSets("walk-right_pucanje"), "loop", 3);
-      else if(this.pucanje){
-      //ako stoji i puca
-        this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
-      }
-       // ako stoji, onda prikaži zadani položaj za desno
+      if (this.velocity_x > 0.1) this.changeFrameSet(this.frameSets("walk-right"), "loop", 5);
+      // ako stoji, onda prikaži zadani položaj za desno
       else this.changeFrameSet(this.frameSets("right"), "pause");
-    }
-    else if (this.direction == 270) {
-      if (this.velocity_x < -1.8 && !this.pucanje) this.changeFrameSet(this.frameSets("walk-left"), "loop", 3);
-      else if (this.velocity_x < -1.8 && this.pucanje) this.changeFrameSet(this.frameSets("walk-left_pucanje"), "loop", 3);
-      else if(this.pucanje){
-        this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
-      }
-      else this.changeFrameSet(this.frameSets("left"), "pause");
-    }
-    else if(this.penjanje_skale){
-      //za penjanje po skalama
-      if(this.velocity_y < -2.5 || this.velocity_y > 2.5)this.changeFrameSet(this.frameSets("skale"), "loop", 3);
-      // pucanje na skalama u desno
-      else if(this.pucanje && this.velocity_x >= 0)   this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
-      //pucanje na skalama u lijevo
-      else if(this.pucanje && this.velocity_x < 0)   this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
-      // ako ne puca samo određujemo stranu na koju će lik gledat kad stoji na skalama
-      else if(this.velocity_x >= 0) this.changeFrameSet(this.frameSets("skale_stoji"), "pause");
-      else this.changeFrameSet(this.frameSets("skale_stoji"), "pause");
     }
     else if (this.direction == 180) {
-      if (this.velocity_y > 0.1) this.changeFrameSet(this.frameSets("walk-down"), "loop", 10);
+      if (this.velocity_y > 0.1) this.changeFrameSet(this.frameSets("walk-down"), "loop", 5);
       else this.changeFrameSet(this.frameSets("down"), "pause");
     }
-    else{ //specifičan slučaj nakon setupa dok je brzina 0
-      if(this.pucanje) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
-      else this.changeFrameSet(this.frameSets("right"), "pause");
+    else if (this.direction == 270) {
+      if (this.velocity_x < -0.1) this.changeFrameSet(this.frameSets("walk-left"), "loop", 5);
+      else this.changeFrameSet(this.frameSets("left"), "pause");
     }
 
     this.animate();
 
-  } //// updateAnimation
+  }
+  //// updateAnimation
 
   /**
    * @param {number} - tileId

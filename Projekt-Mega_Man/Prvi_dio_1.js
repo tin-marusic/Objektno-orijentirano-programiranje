@@ -136,6 +136,18 @@
                  "width":32,
                  "x":978,
                  "y":176
+                }, 
+                {
+                 "gid":25,
+                 "height":64,
+                 "id":13,
+                 "name":"skale_donje",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":388,
+                 "y":514
                 }],
          "opacity":1,
          "properties":[
@@ -180,7 +192,7 @@
          "y":0
         }],
  "nextlayerid":7,
- "nextobjectid":13,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",

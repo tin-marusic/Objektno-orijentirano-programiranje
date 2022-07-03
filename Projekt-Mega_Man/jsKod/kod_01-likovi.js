@@ -54,8 +54,72 @@ class GlavniLik extends Lik{
         this.okvir = true;
         this.gravity = 2;
         this.friction = 0.8;
+        this.health = 100;
+        this.points = 0;
 
     }
+
+    updateAnimation() {
+      if (this.jumping && !this.penjanje_skale) {
+        if(!this.pucanje){
+          //ako skače i ne puca
+          if (this.velocity_y < -0.1 && this.velocity_x > 0) this.changeFrameSet(this.frameSets("walk_l-up"), "pause");
+          else if (this.velocity_y < -0.1 && this.velocity_x < 0) this.changeFrameSet(this.frameSets("walk-up"), "pause");
+          else if (this.velocity_y > 0.1 && this.velocity_x < 0) this.changeFrameSet(this.frameSets("up"), "pause");
+          else if(this.velocity_y > 0.1 && this.velocity_x > 0) this.changeFrameSet(this.frameSets("up_l"), "pause");
+          else this.changeFrameSet(this.frameSets("right"), "pause");
+        }
+        //ako skace i puca desno
+        else if(this.velocity_x > 0) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+        //ako skace i puca lijevo
+        else this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
+      }
+      // ako je lik okrenut desno
+      else if (this.direction == 90) {
+      // ako ima brzinu po x, onda rotiraj animacije koje postoje za walk-right
+        if (this.velocity_x > 1.8 && !this.pucanje) this.changeFrameSet(this.frameSets("walk-right"), "loop", 3);
+       // ako trci i puca 
+        else if (this.velocity_x > 1.8 && this.pucanje) this.changeFrameSet(this.frameSets("walk-right_pucanje"), "loop", 3);
+        else if(this.pucanje){
+        //ako stoji i puca
+          this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+        }
+         // ako stoji, onda prikaži zadani položaj za desno
+        else this.changeFrameSet(this.frameSets("right"), "pause");
+      }
+      else if (this.direction == 270) {
+        if (this.velocity_x < -1.8 && !this.pucanje) this.changeFrameSet(this.frameSets("walk-left"), "loop", 3);
+        else if (this.velocity_x < -1.8 && this.pucanje) this.changeFrameSet(this.frameSets("walk-left_pucanje"), "loop", 3);
+        else if(this.pucanje){
+          this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
+        }
+        else this.changeFrameSet(this.frameSets("left"), "pause");
+      }
+      else if(this.penjanje_skale){
+        if(this.on_top) this.changeFrameSet(this.frameSets("right"), "pause");
+        //za penjanje po skalama
+        else if(this.velocity_y < -2.5 || this.velocity_y > 2.5)this.changeFrameSet(this.frameSets("skale"), "loop", 3);
+        // pucanje na skalama u desno
+        else if(this.pucanje_skale_d)   this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+        //pucanje na skalama u lijevo
+        else if(this.pucanje_skale_l)   this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
+        // ako ne puca samo određujemo stranu na koju će lik gledat kad stoji na skalama
+        else this.changeFrameSet(this.frameSets("skale_stoji"), "pause");
+      }
+      /*else if (this.direction == 180) {
+        if (this.velocity_y > 0.1) this.changeFrameSet(this.frameSets("walk-down"), "loop", 10);
+        else this.changeFrameSet(this.frameSets("down"), "pause");
+      }*/
+
+      else{ //specifičan slučaj nakon setupa dok je brzina 0
+        if(this.pucanje) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+        else this.changeFrameSet(this.frameSets("right"), "pause");
+      }
+  
+      this.animate();
+  
+    }
+
     moveRight() {
         this.direction = 90;
         this.velocity_x = 7.5;
@@ -123,18 +187,21 @@ class GlavniLik extends Lik{
       this.gravity = 2;
       this.friction = 0.8;
     }
-    puca(g){
-      let s = 0;
-      if(this.velocity_x > 0){  //određuje se smjer pucanja 
-        s = 1
+    puca(g,smjer){
+      if(smjer == "desno"){
+        this.pucanje_skale_d = true; //animacije pucanja na skalama
+        this.pucnaje_skale_l = false;
       }
-      else if(this.velocity_x < 0){
-        s = 2;
+      else if(smjer == "lijevo"){
+        this.pucanje_skale_l = true;
+        this.pucanje_skale_d = false;
       }
-      else{s = 1} // brzina je 0 samo na početku,a tad nam više odgovara da puca desno
       let x = this.x +32 ; //postavljamo na centar lika
       let y = this.y + 23 ;
-      g.vidljivost(x,y,s,this.velocity_x);
+      g.vidljivost(x,y,smjer);
+    }
+    demage(c){
+      this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
     }
 
 }
@@ -144,6 +211,7 @@ class Skale extends Item{
       super(layer);
       this.visible = true;
       this.gornje_skale = false; // postavljamo klasu za najgornje skale
+      this.donje_skale = false;
     }
     start(x,y){
       this.x = x;
@@ -173,17 +241,17 @@ class Metak extends Item{
     this.poziv = false;
   }
 
-  vidljivost(x,y,s,z1){
+  vidljivost(x,y,smjer){
     this.x = x;
     this.y = y;
     this.x_0 = x;
     this.y_0 = y;
     this.visible = true;
     this.poziv = true; //ograničava na samo jedno stvaranje metka
-    if(s == 1){   //smjer metka u ovisnosti o s
+    if(smjer == "desno"){   //smjer metka u ovisnosti o s
       this.moveRight();
     }
-    else if(s === 2){
+    else if(smjer == "lijevo"){
       this.moveLeft();
     }
     else{
@@ -241,6 +309,22 @@ class platforma_nevidljiva extends Item{
 
   postani_vidljiv(){
     this.visible = true;
+  }
+}
+
+class siljci extends Item{
+  constructor(layer){
+    super(layer);
+    this.visible = true;
+    this.value = 100;
+  }
+  start(x,y){
+    this.x = x;
+    this.y = y;
+  }
+  updatePosition() { //položaj se ne mijenja
+    this.x_old = this.x;
+    this.y_old = this.y;
   }
 }
 

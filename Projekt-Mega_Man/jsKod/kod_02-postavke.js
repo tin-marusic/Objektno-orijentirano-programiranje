@@ -62,20 +62,21 @@ function setupPrvi_dio_1(x,y) {
     GAME.activeWorldMap.setCollisions("Platforme");  //likovi ne propadaju kroz platforme
 
     Postavke.s1 = new Skale(GAME.getSpriteLayer("skale_gornje"));
-    Postavke.s1.start(2*64,11*63.8); //smanjujemo y da lik ne "zapinje" za druge tileove
+    Postavke.s1.start(2*64,11*63.9); //smanjujemo y da lik ne "zapinje" za druge tileove
     Postavke.s1.gornje_skale = true; //označavamo najgornje skale
     GAME.addSprite(Postavke.s1);
 
     Postavke.s2 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s2.start(2*64,12*63.87); //ostale smanjujemo zbog grafike, da ne bude rupa na skalama
+    Postavke.s2.start(2*64,12*63.92); //ostale smanjujemo zbog grafike, da ne bude rupa na skalama
     GAME.addSprite(Postavke.s2);
 
     Postavke.s3 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s3.start(2*64,13*63.94);
+    Postavke.s3.start(2*64,13*63.96);
     GAME.addSprite(Postavke.s3);
 
-    Postavke.s4 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s4 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s4.start(2*64,14*64); 
+    Postavke.s4.donje_skale = true;
     GAME.addSprite(Postavke.s4);
 
     Postavke.s5 = new Skale(GAME.getSpriteLayer("skale_gornje"));
@@ -95,8 +96,9 @@ function setupPrvi_dio_1(x,y) {
     Postavke.s8.start(14*64,13*63.95);
     GAME.addSprite(Postavke.s8);
 
-    Postavke.s9 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s9 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s9.start(14*64,14*64);  
+    Postavke.s9.donje_skale = true;
     GAME.addSprite(Postavke.s9);
 
     Postavke.s10 = new Skale(GAME.getSpriteLayer("skale_gornje"));
@@ -108,8 +110,9 @@ function setupPrvi_dio_1(x,y) {
     Postavke.s11.start(18*64,8*63.9); 
     GAME.addSprite(Postavke.s11);
 
-    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s12.start(18*64,9*64); 
+    Postavke.s12.donje_skale = true;
     GAME.addSprite(Postavke.s12);
 
     Postavke.s13 = new Skale(GAME.getSpriteLayer("skale_gornje"));
@@ -121,8 +124,9 @@ function setupPrvi_dio_1(x,y) {
     Postavke.s14.start(2*64,5*63.86); 
     GAME.addSprite(Postavke.s14);
 
-    Postavke.s15 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s15 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s15.start(2*64,6*63.97); 
+    Postavke.s15.donje_skale = true;
     GAME.addSprite(Postavke.s15);
 
     Postavke.s16 = new Skale(GAME.getSpriteLayer("skale_gornje"));
@@ -130,8 +134,9 @@ function setupPrvi_dio_1(x,y) {
     Postavke.s16.gornje_skale = true;
     GAME.addSprite(Postavke.s16);
 
-    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s17.start(17*64,2*63.9); 
+    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale_donje"));
+    Postavke.s17.start(17*64,2*63.9);
+    Postavke.s17.donje_skale = true; 
     GAME.addSprite(Postavke.s17);
 
     Postavke.m1 = new Metak(GAME.getSpriteLayer("metak1"));
@@ -162,62 +167,86 @@ function setupDrugi_dio_1(x,y) {
 
     Postavke.s2 = new Skale(GAME.getSpriteLayer("skale"));
     Postavke.s2.start(10*64,11*63.87); //ostale smanjujemo zbog grafike, da ne bude rupa na skalama
+    Postavke.s2.gornje_skale = false;
+    Postavke.s2.donje_skale = false;
     GAME.addSprite(Postavke.s2);
 
     Postavke.s3 = new Skale(GAME.getSpriteLayer("skale"));
     Postavke.s3.start(10*64,12*63.94);
+    Postavke.s3.gornje_skale = false;
+    Postavke.s3.donje_skale = false;
     GAME.addSprite(Postavke.s3);
 
-    Postavke.s4 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s4 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s4.start(10*64,13*64); 
+    Postavke.s4.gornje_skale = false;
+    Postavke.s4.donje_skale = true;
     GAME.addSprite(Postavke.s4);
 
     Postavke.s5 = new Skale(GAME.getSpriteLayer("skale_gornje"));
     Postavke.s5.start(5*64,11*63.8); 
     Postavke.s5.gornje_skale = true;
+    Postavke.s5.donje_skale = false;
     GAME.addSprite(Postavke.s5);
 
     Postavke.s6 = new Skale(GAME.getSpriteLayer("skale"));
     Postavke.s6.start(5*64,12*63.85);
+    Postavke.s6.gornje_skale = false;
+    Postavke.s6.donje_skale = false;
     GAME.addSprite(Postavke.s6);
 
-    Postavke.s7 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s7 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s7.start(5*64,13*63.9);
+    Postavke.s7.gornje_skale = false;
+    Postavke.s7.donje_skale = true;
     GAME.addSprite(Postavke.s7);
 
     Postavke.s10 = new Skale(GAME.getSpriteLayer("skale_gornje"));
     Postavke.s10.start(18*64,5*63.8);
     Postavke.s10.gornje_skale = true;
+    Postavke.s10.donje_skale = false;
     GAME.addSprite(Postavke.s10);
 
     Postavke.s11 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s11.start(18*64,6*63.9); 
+    Postavke.s11.start(18*64,6*63.9);
+    Postavke.s11.gornje_skale = false;
+    Postavke.s11.donje_skale = false; 
     GAME.addSprite(Postavke.s11);
 
-    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s12.start(18*64,7*64); 
+    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale_donje"));
+    Postavke.s12.start(18*64,7*64);
+    Postavke.s12.gornje_skale = false;
+    Postavke.s12.donje_skale = true;
     GAME.addSprite(Postavke.s12);
 
     Postavke.s13 = new Skale(GAME.getSpriteLayer("skale_gornje"));
     Postavke.s13.start(1*64,1*63.72);
     Postavke.s13.gornje_skale = true;
+    Postavke.s13.donje_skale = false;
     GAME.addSprite(Postavke.s13);
 
     Postavke.s14 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s14.start(1*64,2*63.86); 
+    Postavke.s14.start(1*64,2*63.86);
+    Postavke.s14.gornje_skale = false;
+    Postavke.s14.donje_skale = false; 
     GAME.addSprite(Postavke.s14);
 
-    Postavke.s15 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s15 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s15.start(1*64,3*63.97); 
+    Postavke.s15.gornje_skale = false;
+    Postavke.s15.donje_skale = true;
     GAME.addSprite(Postavke.s15);
 
     Postavke.s16 = new Skale(GAME.getSpriteLayer("skale_gornje"));
-    Postavke.s16.start(17*64,14*63.8);
+    Postavke.s16.start(17*64,14*63.98);
     Postavke.s16.gornje_skale = true;
+    Postavke.s16.donje_skale = false;
     GAME.addSprite(Postavke.s16);
 
-    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s17.start(17*64,15*63.9); 
+    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale_donje"));
+    Postavke.s17.start(17*64,15*63.8);
+    Postavke.s17.gornje_skale = false; 
+    Postavke.s17.donje_skale = true;
     GAME.addSprite(Postavke.s17);
 
     Postavke.m1 = new Metak(GAME.getSpriteLayer("metak1"));
@@ -249,32 +278,44 @@ function setupTreci_dio_1() {
 
     Postavke.s2 = new Skale(GAME.getSpriteLayer("skale"));
     Postavke.s2.start(17*64,12*63.87); //ostale smanjujemo zbog grafike, da ne bude rupa na skalama
+    Postavke.s2.gornje_skale = false;
+    Postavke.s2.donje_skale = false;
     GAME.addSprite(Postavke.s2);
 
-    Postavke.s3 = new Skale(GAME.getSpriteLayer("skale"));
+    Postavke.s3 = new Skale(GAME.getSpriteLayer("skale_donje"));
     Postavke.s3.start(17*64,13*63.94);
+    Postavke.s3.gornje_skale = false;
+    Postavke.s3.donje_skale = true;
     GAME.addSprite(Postavke.s3);
 
     Postavke.s10 = new Skale(GAME.getSpriteLayer("skale_gornje"));
     Postavke.s10.start(1*64,8*63.8);
     Postavke.s10.gornje_skale = true;
+    Postavke.s10.donje_skale = false;
     GAME.addSprite(Postavke.s10);
 
     Postavke.s11 = new Skale(GAME.getSpriteLayer("skale"));
     Postavke.s11.start(1*64,9*63.9); 
+    Postavke.s11.gornje_skale = false;
+    Postavke.s11.donje_skale = false;
     GAME.addSprite(Postavke.s11);
 
-    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s12.start(1*64,10*64); 
+    Postavke.s12 = new Skale(GAME.getSpriteLayer("skale_donje"));
+    Postavke.s12.start(1*64,10*64);
+    Postavke.s12.gornje_skale = false; 
+    Postavke.s12.donje_skale = true;
     GAME.addSprite(Postavke.s12);
 
     Postavke.s16 = new Skale(GAME.getSpriteLayer("skale_gornje"));
-    Postavke.s16.start(1*64,14*63.8);
+    Postavke.s16.start(1*64,14*63.9);
     Postavke.s16.gornje_skale = true;
+    Postavke.s16.donje_skale = false;
     GAME.addSprite(Postavke.s16);
 
-    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale"));
-    Postavke.s17.start(1*64,15*63.9); 
+    Postavke.s17 = new Skale(GAME.getSpriteLayer("skale_donje"));
+    Postavke.s17.start(1*64,15*63); 
+    Postavke.s17.gornje_skale = false; 
+    Postavke.s17.donje_skale = true;
     GAME.addSprite(Postavke.s17);
 
     Postavke.m1 = new Metak(GAME.getSpriteLayer("metak1"));
@@ -288,10 +329,21 @@ function setupTreci_dio_1() {
     Postavke.m5 = new Metak(GAME.getSpriteLayer("metak5"));
     GAME.addSprite(Postavke.m5);
 
-    Postavke.platforma1 = new platforma_nevidljiva(GAME.getSpriteLayer("Platforme_nevidljive"));
-    Postavke.platforma1.start(5*64,13*64);
-    Postavke.platforma1.postani_vidljiv()
+    Postavke.platforma1 = new platforma_nevidljiva(GAME.getSpriteLayer("Platforme_nevidljive")); //platforme koje se stvore naknadno
+    Postavke.platforma1.start(3*64,7*64);
     GAME.addSprite(Postavke.platforma1);
+
+    Postavke.platforma2 = new platforma_nevidljiva(GAME.getSpriteLayer("Platforme_nevidljive"));
+    Postavke.platforma2.start(3*64,6*64);
+    GAME.addSprite(Postavke.platforma2);
+
+    Postavke.spike1 = new siljci(GAME.getSpriteLayer("siljci"));
+    Postavke.spike1.start(7*64,11*63.98);
+    GAME.addSprite(Postavke.spike1);
+
+    Postavke.spike2 = new siljci(GAME.getSpriteLayer("siljci"));
+    Postavke.spike2.start(10*64,11*63.98);
+    GAME.addSprite(Postavke.spike2);
 
 
   Postavke.GlavniLik = new GlavniLik(GAME.getSpriteLayer("Glavni lik")); //glavni lik stvoren zadni da bude ispred skala
