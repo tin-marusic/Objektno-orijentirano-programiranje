@@ -150,6 +150,10 @@ function setupPrvi_dio_1(x,y) {
     Postavke.m5 = new Metak(GAME.getSpriteLayer("metak5"));
     GAME.addSprite(Postavke.m5);
 
+    Postavke.b1 = new Blader(GAME.getSpriteLayer("Blader"));
+    Postavke.b1.start(5.1*64,9*64,7*64,11*64);
+    GAME.addSprite(Postavke.b1);
+
     Postavke.GlavniLik = new GlavniLik(GAME.getSpriteLayer("Glavni lik")); //glavni lik stvoren zadni da bude ispred skala
     Postavke.GlavniLik.start(x,y);
     GAME.addSprite(Postavke.GlavniLik);

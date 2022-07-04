@@ -96,8 +96,9 @@ class GlavniLik extends Lik{
         else this.changeFrameSet(this.frameSets("left"), "pause");
       }
       else if(this.penjanje_skale){
-        if(this.on_top) this.changeFrameSet(this.frameSets("right"), "pause");
+        if(this.on_top && !this.pucanje) this.changeFrameSet(this.frameSets("right"), "pause");
         //za penjanje po skalama
+        else if(this.bottom_skale && !this.pucanje) this.changeFrameSet(this.frameSets("right"), "pause");
         else if(this.velocity_y < -2.5 || this.velocity_y > 2.5)this.changeFrameSet(this.frameSets("skale"), "loop", 3);
         // pucanje na skalama u desno
         else if(this.pucanje_skale_d)   this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
@@ -238,7 +239,9 @@ class Metak extends Item{
     this.visible = false;
     this.g = 0;
     this.i = 1;
+    this.value = 10; //šteta koju nanosi protivniku
     this.poziv = false;
+    this.okvir = true;
   }
 
   vidljivost(x,y,smjer){
@@ -328,5 +331,76 @@ class siljci extends Item{
   }
 }
 
+class Blader extends Lik{
+    constructor(layer){
+      super(0,0,layer);
+
+      this.frame_sets={
+        "left": [114,115],
+        "right": [112,113]
+      }
+
+      this.visible = true;
+      this.health = 10;
+      this.value = 10;
+      this.velocity_x = 5; //početna brzina i smjer
+      this.direction = 90;
+      this.granica_desno = null;
+      this.granica_lijevo = null;
+    }
+    updatePosition() { //ukida gravitaciju 
+      this.x_old = this.x;
+      this.x += this.velocity_x;
+      this.y_old = this.y;
+      this.y += this.velocity_y;
+      if(this.x < this.granica_lijevo){ //ako prođe zadane granice mjenja smjer kretanja
+        this.moveRight();
+      }
+      else if(this.x > this.granica_desno){
+        this.moveLeft();
+      }
+    }
+    moveLeft(){
+      this.direction = 270; 
+      this.velocity_x = -5; 
+    }
+    moveRight(){
+      this.direction = 90;
+      this.velocity_x = 5;
+    }
+
+    start(x1,x2,x0,y0){ //zadanju se granice kretanja i početni polozaj
+      this.x = x0;
+      this.y = y0;
+      this.granica_desno = x2
+      this.granica_lijevo = x1
+    }
+
+    updateAnimation() {
+      if(this.direction == 90)this.changeFrameSet(this.frameSets("right"), "loop" , 7);
+      if(this.direction == 270) this.changeFrameSet(this.frameSets("left"), "loop" , 7);
+      this.animate();
+    }
+    demage(c){
+      this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
+      if(this.health <= 0){
+        this.visible = false;
+      }
+     }
+     touch_Glavni_Lik(smjer){
+      if(smjer == "desno"){
+        this.velocity_x = 100;  //kad dotakne glavnog lika odbit će se u smjeru iz kojeg dolazi u odnosu na Glavnog lika
+      }
+      else if(smjer == "lijevo"){
+        this.velocity_x = -100;
+      }
+     }
+
+     x_distance(c){ //računa udaljenost između dva lika po x
+      let x = this.x - c.x;
+      return x
+     }
+
+}
 
 

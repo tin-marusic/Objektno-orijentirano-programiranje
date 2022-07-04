@@ -41,15 +41,18 @@ function Projekt_logika1() {
             Postavke.s7,Postavke.s8,Postavke.s9,Postavke.s10,Postavke.s11,Postavke.s12,
             Postavke.s13,Postavke.s14,Postavke.s15,Postavke.s16,Postavke.s17] //niz svih skala
     let metci = [ Postavke.m1,Postavke.m2,Postavke.m3,Postavke.m4,Postavke.m5]
+    let bladers = [Postavke.b1]
 
     if (SENSING.left.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveLeft();
       smjer = "lijevo";
+      Postavke.GlavniLik.bottom_skale = false;  //pomakne li se lik gasimo animaciju za dno skala
     }
   
     if (SENSING.right.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveRight();
       smjer = "desno";
+      Postavke.GlavniLik.bottom_skale = false; 
     }
 
     for(let i = 0; i < v.length; i++){ //Ako ne dira ni jedne skale dodir je sigurno false
@@ -70,6 +73,7 @@ function Projekt_logika1() {
       Postavke.GlavniLik.no_gravity(); //ukidamo gravitaciju ako lik dira skale
       Postavke.GlavniLik.penjanje_skale = true; //za animaciju na skalama 
       if (SENSING.up.active) {
+        Postavke.GlavniLik.bottom_skale = false; 
         for(let i = 0; i < v.length; i++){
           if(Postavke.GlavniLik.touching(v[i])){ //gledamo koje skale lik dira
             ukini_kretnje = true; //lik se ne miče livo-desno kad je na skalama
@@ -113,6 +117,7 @@ function Projekt_logika1() {
               if(v[i].donje_skale){ //provjeravamo jesu li donje
                 if(Postavke.GlavniLik.y - v[i].y > 6){
                   ukini_kretnje = false; //vracamo kretnje ako je lik na dnu skala
+                  Postavke.GlavniLik.bottom_skale = true; //animacija na dnu skala
                 }
                 else{
                   Postavke.GlavniLik.moveDown();
@@ -207,9 +212,30 @@ function Projekt_logika1() {
       Postavke.GlavniLik.pucanje_skale_l = false;
       Postavke.GlavniLik.pucanje_skale_d = false;
     }
-    /*if (SENSING.up.active) {
-      Postavke.GlavniLik.jump();
-    }*/
+
+    // INTERAKCIJE S NEPRIJATELJIMA
+    
+    for(let i = 0; i < bladers.length; i++){ //ako Glavni lik takne bilo kojeg bladera doživi štetu
+      if(Postavke.GlavniLik.touching(bladers[i])){
+        Postavke.GlavniLik.demage(bladers[i])
+        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){
+          bladers[i].touch_Glavni_Lik("desno");
+        }
+        else{
+          bladers[i].touch_Glavni_Lik("lijevo");
+        }
+      }
+    }
+
+    for(let i = 0;i < metci.length;i++){ //ako metak pogodi bladera on doživi štetu
+      for(let j = 0; i < bladers.length;i++){
+        if(metci[i].touching(bladers[j])){
+          bladers[j].demage(metci[i]);
+          metci[i].visible = false;
+        }
+      }
+    }
+
 }
 
 function Projekt_logika2() {
@@ -221,11 +247,13 @@ function Projekt_logika2() {
   if (SENSING.left.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveLeft();
     smjer = "lijevo";
+    Postavke.GlavniLik.bottom_skale = false;
   }
 
   if (SENSING.right.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveRight();
     smjer = "desno";
+    Postavke.GlavniLik.bottom_skale = false;
   }
 
   for(let i = 0; i < v.length; i++){ //Ako ne dira ni jedne skale dodir je sigurno false
@@ -246,6 +274,7 @@ function Projekt_logika2() {
     Postavke.GlavniLik.no_gravity(); //ukidamo gravitaciju ako lik dira skale
     Postavke.GlavniLik.penjanje_skale = true; //za animaciju na skalama i ukidamo micanje livo desno dok se penje
     if (SENSING.up.active) {
+      Postavke.GlavniLik.bottom_skale = false;
       for(let i = 0; i < v.length; i++){
         if(Postavke.GlavniLik.touching(v[i])){ //gledamo koje skale lik dira
           ukini_kretnje = true; //lik se ne miče livo-desno kad je na skalama
@@ -289,6 +318,7 @@ function Projekt_logika2() {
             if(v[i].donje_skale){ //provjeravamo jesu li donje
               if(Postavke.GlavniLik.y - v[i].y > 6){
                 ukini_kretnje = false; //vracamo kretnje ako je lik na dnu skala
+                Postavke.GlavniLik.bottom_skale = true;
               }
               else{
                 Postavke.GlavniLik.moveDown();
@@ -392,11 +422,14 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
 
   if (SENSING.left.active && !dodir_platforma_nevidljiva && !ukini_kretnje) {  //stavljamo ograničenje da se ne kreće lijevo ako dira "nevidljivu" platformu
     Postavke.GlavniLik.moveLeft();
+    smjer = "lijevo";
+    Postavke.GlavniLik.bottom_skale = false;
   }
 
   if (SENSING.right.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveRight();
     smjer = "desno";
+    Postavke.GlavniLik.bottom_skale = false;
   }
 
   for(let i = 0; i < v.length; i++){ //Ako ne dira ni jedne skale dodir je sigurno false
@@ -417,6 +450,7 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
     Postavke.GlavniLik.no_gravity(); //ukidamo gravitaciju ako lik dira skale
     Postavke.GlavniLik.penjanje_skale = true; //za animaciju na skalama i ukidamo micanje livo desno dok se penje
     if (SENSING.up.active) {
+      Postavke.GlavniLik.bottom_skale = false;
       for(let i = 0; i < v.length; i++){
         if(Postavke.GlavniLik.touching(v[i])){ //gledamo koje skale lik dira
           ukini_kretnje = true; //lik se ne miče livo-desno kad je na skalama
@@ -460,6 +494,7 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
             if(v[i].donje_skale){ //provjeravamo jesu li donje
               if(Postavke.GlavniLik.y - v[i].y > 6){
                 ukini_kretnje = false; //vracamo kretnje ako je lik na dnu skala
+                Postavke.GlavniLik.bottom_skale = true;
               }
               else{
                 Postavke.GlavniLik.moveDown();

@@ -249,6 +249,7 @@ class Sprite extends GameWorldObjectAnimator {
     this.pucanje_skale_l = false; //pucanje na skalama - animacije
     this.pucanje_skale_d = false;
     this.on_top = false; //animacija na vrhu skala
+    this.bottom_skale = false; //animacije na dnu skala
 
   }
 

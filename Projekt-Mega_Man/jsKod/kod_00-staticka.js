@@ -35,4 +35,5 @@ class Postavke {
     static spike1;
     static spike2;
     static spike3;
+    static b1;
 }
