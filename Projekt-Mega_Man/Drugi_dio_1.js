@@ -37,6 +37,24 @@
          "y":0
         }, 
         {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58, 59, 60, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":16,
+         "id":7,
+         "name":"Blader",
+         "opacity":1,
+         "properties":[
+                {
+                 "name":"class",
+                 "type":"string",
+                 "value":"Blader"
+                }],
+         "type":"tilelayer",
+         "visible":true,
+         "width":20,
+         "x":0,
+         "y":0
+        }, 
+        {
          "draworder":"topdown",
          "id":5,
          "name":"stvari",
@@ -191,7 +209,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
+ "nextlayerid":8,
  "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
@@ -921,6 +939,58 @@
          "imagewidth":64,
          "margin":0,
          "name":"pozadina_crna",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":64,
+         "tilewidth":64
+        }, 
+        {
+         "columns":1,
+         "firstgid":58,
+         "image":"Mape\/Prvi level\/blader1-removebg-preview.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "margin":0,
+         "name":"blader1",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":64,
+         "tilewidth":64
+        }, 
+        {
+         "columns":1,
+         "firstgid":59,
+         "image":"Mape\/Prvi level\/blader2-removebg-preview.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "margin":0,
+         "name":"blader2",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":64,
+         "tilewidth":64
+        }, 
+        {
+         "columns":1,
+         "firstgid":60,
+         "image":"Mape\/Prvi level\/blader_l1.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "margin":0,
+         "name":"blader_l1",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":64,
+         "tilewidth":64
+        }, 
+        {
+         "columns":1,
+         "firstgid":61,
+         "image":"Mape\/Prvi level\/blader_l2.png",
+         "imageheight":64,
+         "imagewidth":64,
+         "margin":0,
+         "name":"blader_l2",
          "spacing":0,
          "tilecount":1,
          "tileheight":64,

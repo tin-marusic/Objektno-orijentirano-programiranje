@@ -154,6 +154,60 @@ function setupPrvi_dio_1(x,y) {
     Postavke.b1.start(5.1*64,9*64,7*64,11*64);
     GAME.addSprite(Postavke.b1);
 
+    Postavke.b2 = new Blader(GAME.getSpriteLayer("Blader2"));
+    Postavke.b2.start(8*64,11.99*64,10*64,13*64);
+    GAME.addSprite(Postavke.b2);
+
+    Postavke.b3 = new Blader(GAME.getSpriteLayer("Blader3"));
+    Postavke.b3.start(0.8,3.99*64,1*64,3*64);
+    GAME.addSprite(Postavke.b3);
+
+    Postavke.c1 = new coin(GAME.getSpriteLayer("coin1"));
+    GAME.addSprite(Postavke.c1);
+
+    Postavke.c2 = new coin(GAME.getSpriteLayer("coin2"));
+    GAME.addSprite(Postavke.c2);
+
+    Postavke.c3 = new coin(GAME.getSpriteLayer("coin3"));
+    GAME.addSprite(Postavke.c3);
+
+    Postavke.c4 = new coin(GAME.getSpriteLayer("coin4"));
+    GAME.addSprite(Postavke.c4);
+
+    Postavke.c5 = new coin(GAME.getSpriteLayer("coin5"));
+    GAME.addSprite(Postavke.c5);
+
+    Postavke.c6 = new coin(GAME.getSpriteLayer("coin6"));
+    GAME.addSprite(Postavke.c6);
+
+    Postavke.blaster1 = new blaster(GAME.getSpriteLayer("Blaster1"));
+    Postavke.blaster1.start(18*64,12*64);
+    Postavke.blaster1.smjer = "lijevo";
+    GAME.addSprite(Postavke.blaster1);
+
+    Postavke.blaster2 = new blaster(GAME.getSpriteLayer("Blaster2"));
+    Postavke.blaster2.start(13*64,4*64);
+    Postavke.blaster2.smjer = "desno";
+    GAME.addSprite(Postavke.blaster2);
+
+    Postavke.blaster3 = new blaster(GAME.getSpriteLayer("Blaster3"));
+    Postavke.blaster3.start(0,4*64);
+    Postavke.blaster3.smjer = "desno";
+    GAME.addSprite(Postavke.blaster3);
+
+    Postavke.bm1 = new bMetak(GAME.getSpriteLayer("bm1"));
+    GAME.addSprite(Postavke.bm1);
+    Postavke.bm2 = new bMetak(GAME.getSpriteLayer("bm2"));
+    GAME.addSprite(Postavke.bm2);
+    Postavke.bm3 = new bMetak(GAME.getSpriteLayer("bm3"));
+    GAME.addSprite(Postavke.bm3);
+    Postavke.bm4 = new bMetak(GAME.getSpriteLayer("bm4"));
+    GAME.addSprite(Postavke.bm4);
+    Postavke.bm5 = new bMetak(GAME.getSpriteLayer("bm5"));
+    GAME.addSprite(Postavke.bm5);
+    Postavke.bm6 = new bMetak(GAME.getSpriteLayer("bm6"));
+    GAME.addSprite(Postavke.bm6);
+
     Postavke.GlavniLik = new GlavniLik(GAME.getSpriteLayer("Glavni lik")); //glavni lik stvoren zadni da bude ispred skala
     Postavke.GlavniLik.start(x,y);
     GAME.addSprite(Postavke.GlavniLik);

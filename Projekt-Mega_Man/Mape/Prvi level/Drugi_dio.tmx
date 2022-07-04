@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="14">
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="14">
  <editorsettings>
   <export target="../../Drugi_dio_1.js" format="js"/>
  </editorsettings>
@@ -171,6 +171,18 @@
  <tileset firstgid="57" name="pozadina_crna" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="black.png" width="64" height="64"/>
  </tileset>
+ <tileset firstgid="58" name="blader1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="blader1-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="59" name="blader2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="blader2-removebg-preview.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="60" name="blader_l1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="blader_l1.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="61" name="blader_l2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="blader_l2.png" width="64" height="64"/>
+ </tileset>
  <layer id="3" name="Pozadina" width="20" height="16">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -209,6 +221,29 @@
 0,0,0,0,0,0,0,22,0,0,0,0,22,22,0,0,0,0,0,23,
 23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,0,23,23,
 23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,0,23,23
+</data>
+ </layer>
+ <layer id="7" name="Blader" width="20" height="16">
+  <properties>
+   <property name="class" value="Blader"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,58,59,60,61,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <objectgroup id="5" name="stvari">

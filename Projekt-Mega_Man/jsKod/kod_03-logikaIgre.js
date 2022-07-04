@@ -28,6 +28,8 @@ function update_main() {
 
   
 };
+let bodovi = 0; //varijable pomoću kojih ćemo čuvati bodove i živote pri prijelazu među levelima
+let zivoti = 100; //osvježavat će se na pocetku i na kraju funkcije za logiku
 let space_pritisnut = true; 
 let dodir = false;
 let up_pritisnut = true;
@@ -37,11 +39,18 @@ let ukini_kretnje = false //za ukidanje micanja lijevo i desno na skalama
 let smjer = null; //smjer pucanja na skalama
 
 function Projekt_logika1() {
+    Postavke.GlavniLik.points = bodovi;
+    Postavke.GlavniLik.health = zivoti;
+    
     let v = [Postavke.s1,Postavke.s2,Postavke.s3,Postavke.s4,Postavke.s5,Postavke.s6,
             Postavke.s7,Postavke.s8,Postavke.s9,Postavke.s10,Postavke.s11,Postavke.s12,
             Postavke.s13,Postavke.s14,Postavke.s15,Postavke.s16,Postavke.s17] //niz svih skala
     let metci = [ Postavke.m1,Postavke.m2,Postavke.m3,Postavke.m4,Postavke.m5]
-    let bladers = [Postavke.b1]
+    let bladers = [Postavke.b1,Postavke.b2,Postavke.b3]
+    let blader_coins = [Postavke.c1,Postavke.c2,Postavke.c3]
+    let blasters = [Postavke.blaster1,Postavke.blaster2,Postavke.blaster3]
+    let blaster_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
+    let blaster_metci = [[Postavke.bm1,Postavke.bm2],[Postavke.bm3,Postavke.bm4],[Postavke.bm5,Postavke.bm6]]
 
     if (SENSING.left.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveLeft();
@@ -215,30 +224,87 @@ function Projekt_logika1() {
 
     // INTERAKCIJE S NEPRIJATELJIMA
     
+    //BLADERI
     for(let i = 0; i < bladers.length; i++){ //ako Glavni lik takne bilo kojeg bladera doživi štetu
       if(Postavke.GlavniLik.touching(bladers[i])){
         Postavke.GlavniLik.demage(bladers[i])
-        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){
-          bladers[i].touch_Glavni_Lik("desno");
+        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
+          bladers[i].touch_Glavni_Lik("desno"); //ako dolazi s desna odbit će se desno
         }
         else{
           bladers[i].touch_Glavni_Lik("lijevo");
         }
       }
+      if(Postavke.GlavniLik.touching(blader_coins[i])){
+        Postavke.GlavniLik.total_points(blader_coins[i]);
+        blader_coins[i].pokupi()
+      }
     }
 
     for(let i = 0;i < metci.length;i++){ //ako metak pogodi bladera on doživi štetu
-      for(let j = 0; i < bladers.length;i++){
+      for(let j = 0; j < bladers.length ;j++){
         if(metci[i].touching(bladers[j])){
-          bladers[j].demage(metci[i]);
+          bladers[j].demage(metci[i],blader_coins[j]); //šaljemo metak kojim je pogođen i coin koji će se stvoriti ako umre
           metci[i].visible = false;
         }
       }
     }
 
+    //BLASTERI
+    //Glavni lik puca na blaster
+    for(let i = 0;i < metci.length;i++){ 
+      for(let j = 0; j < blasters.length ;j++){
+        if(metci[i].touching(blasters[j])){
+          if(!blasters[j].zatvoren){  //blaster dozivi stetu samo ako je otvoren
+            blasters[j].demage(metci[i],blaster_coins[j]);
+          }
+        }
+      }
+    }
+    //Lik dodiruje blaster
+    for(let j = 0; j < blasters.length ;j++){
+      if(Postavke.GlavniLik.touching(blasters[j])){
+        Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
+        if(smjer=="desno"){
+          Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
+        }
+        else{
+          Postavke.GlavniLik.velocity_x = 100;
+        }
+      }
+      //lik skuplja coine iza blastera
+      if(Postavke.GlavniLik.touching(blaster_coins[j])){
+        Postavke.GlavniLik.total_points(blaster_coins[j]);
+        blaster_coins[j].pokupi()
+      }
+    }
+    //blaster puca
+    for(let j = 0; j < blasters.length ;j++){
+      if(blasters[j].pucanje && blasters[j].visible){ //gledamo je li blaster u stanju pucanja
+          blasters[j].puca(blaster_metci[j]); //ako je puca svoja dva metka
+      }
+    }
+
+    //blaster pogađa lika
+    for(let i = 0;i < blasters.length;i++){  //vrtimo redove matrice
+      for(let j = 0;j < 2; j++){  //vrtimo stupce matrice
+        if(Postavke.GlavniLik.touching(blaster_metci[i][j])){ //promatramo svaki element matrice redom
+          Postavke.GlavniLik.demage(blaster_metci[i][j]);
+          blaster_metci[i][j].visible = false; //ako pogodi glavnog lika micemo metak
+          blaster_metci[i][j].x = blaster_metci[i][j].x_0 //vraćamo metak na početnu poziciju da se ispuca sa pravog mjesta kad bude vidljiv
+          blaster_metci[i][j].y = blaster_metci[i][j].y_0
+        }
+      }
+    }
+
+    bodovi = Postavke.GlavniLik.points;
+    zivoti = Postavke.GlavniLik.health;
 }
 
 function Projekt_logika2() {
+  Postavke.GlavniLik.points = bodovi;
+  Postavke.GlavniLik.health = zivoti;
+ 
   let v = [Postavke.s1,Postavke.s2,Postavke.s3,Postavke.s4,Postavke.s5,Postavke.s6,
     Postavke.s7,Postavke.s10,Postavke.s11,Postavke.s12,
     Postavke.s13,Postavke.s14,Postavke.s15,Postavke.s16,Postavke.s17] //niz svih skala
@@ -413,9 +479,16 @@ function Projekt_logika2() {
     Postavke.GlavniLik.pucanje_skale_l = false;
     Postavke.GlavniLik.pucanje_skale_d = false;
   }
+
+  bodovi = Postavke.GlavniLik.points;
+  zivoti = Postavke.GlavniLik.health;
 }
 
 function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
+
+  Postavke.GlavniLik.points = bodovi;
+  Postavke.GlavniLik.health = zivoti;
+
   let v = [Postavke.s1,Postavke.s2,Postavke.s3,Postavke.s10,Postavke.s11,Postavke.s12
           ,Postavke.s16,Postavke.s17] //niz svih skala
   let metci = [ Postavke.m1,Postavke.m2,Postavke.m3,Postavke.m4,Postavke.m5]
@@ -608,5 +681,7 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
     Postavke.GlavniLik.demage(Postavke.spike1)
   }
 
+  bodovi = Postavke.GlavniLik.points;
+  zivoti = Postavke.GlavniLik.health;
 
 }

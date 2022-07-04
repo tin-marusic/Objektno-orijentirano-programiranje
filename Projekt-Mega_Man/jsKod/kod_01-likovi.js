@@ -204,6 +204,9 @@ class GlavniLik extends Lik{
     demage(c){
       this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
     }
+    total_points(c){
+      this.points += c.points;
+    }
 
 }
 
@@ -279,7 +282,7 @@ class Metak extends Item{
     if(this.velocity_x < 10.5 && this.velocity_x >-10.5){ //kad metak dotakne nešto maknemo ga
       this.makni()
     }
-    else if(this.velocity_y < -0.01 || this.velocity_y > 0.01){
+    else if(this.velocity_y < -0.1 || this.velocity_y > 0.1){
       this.makni(); //da metak ne zaobilazi platforme
     }
 
@@ -291,6 +294,8 @@ class Metak extends Item{
       this.poziv = false;
       this.velocity_x = 0;
       this.velocity_y = 0;
+      this.x = 0;
+      this.y = 0;
   }
  
 }
@@ -381,10 +386,11 @@ class Blader extends Lik{
       if(this.direction == 270) this.changeFrameSet(this.frameSets("left"), "loop" , 7);
       this.animate();
     }
-    demage(c){
+    demage(c,coin){
       this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
       if(this.health <= 0){
-        this.visible = false;
+        this.visible = false; 
+        coin.stvori(this.x,this.y) //ako blader umre stvaramo coin na tom mjestu
       }
      }
      touch_Glavni_Lik(smjer){
@@ -403,4 +409,147 @@ class Blader extends Lik{
 
 }
 
+class coin extends Item{
+  constructor(layer){
+    super(layer);
+    this.visible = false ;  
+    this.points = 10; 
+    this.width = 50;
+    this.height = 50;
+    this.okvir = true;
+  }
+  stvori(x,y){
+    this.x = x;
+    this.y = y;
+    this.visible = true;
+  }
+  pokupi(){
+    this.visible = false;
+  }
+}
 
+class blaster extends Lik{
+  constructor(layer){
+    super(0,0,layer);
+
+    this.frame_sets={
+      "zatvoren": [121],
+      "otvaranje": [122,123],
+      "zatvaranje": [123,122],
+      "pucanje" : [124]
+    }
+
+    this.visible = true;
+    this.health = 10;
+    this.value = 20;
+    this.vrijeme = 0;
+    this.zatvoren = true;  //ovo ćemo koristit za redoslijed animacija
+    this.otvaranje = false; //mijenjat ćemo vrijednosti u update position
+    this.pucanje = false;
+    this.smjer = null; //smjer u kojem će pucat
+  }
+
+  updateAnimation() {
+    if(this.zatvoren)this.changeFrameSet(this.frameSets("zatvoren"), "pause");
+    else if(this.otvaranje) this.changeFrameSet(this.frameSets("otvaranje"), "loop" , 10);
+    else if(this.zatvaranje) this.changeFrameSet(this.frameSets("zatvaranje"), "loop" , 10);
+    else if(this.pucanje) this.changeFrameSet(this.frameSets("pucanje","pause"))
+    this.animate();
+  }
+
+  updatePosition() { //položaj se ne mijenja
+    this.x_old = this.x;
+    this.y_old = this.y;
+    this.vrijeme += 1;
+    if(this.vrijeme > 130){ //primitivni tajmer, racuna vrijeme pomocu broja update positiona
+      this.vrijeme = 0;
+      this.zatvaranje = true;
+      this.pucanje = false;
+    }
+    else if(this.vrijeme > 90){
+      this.pucanje = true;
+      this.otvaranje = false;
+    }
+    else if(this.vrijeme > 70){
+      this.otvaranje = true;
+      this.zatvoren = false;
+    }
+    else if(this.vrijeme > 10){
+      this.zatvoren = true;
+      this.zatvaranje = false;
+    }
+  }
+  start(x,y){
+    this.x = x;
+    this.y = y;
+  }
+  demage(c,coin){
+    this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
+    if(this.health <= 0){
+      this.visible = false; 
+      coin.stvori(this.x,this.y) //ako blader umre stvaramo coin na tom mjestu
+    }
+   }
+   puca(c){ //prima niz od dva metka
+    c[0].visible = true; //za slučaj da je metak pogodio lika pa je visible false
+    c[1].visible = true;
+    c[0].vidljivost(this.x,this.y,-5,this.smjer); //svakom  zadaje početnu brzinu u y smjeru i pocetni polozaj
+    c[1].vidljivost(this.x,this.y,1,this.smjer);
+   
+   }
+
+}
+
+class bMetak extends Metak{ //ko i obični metak uz promjenu brzina u update position
+  constructor(layer){
+    super(layer);
+  }
+  vidljivost(x,y,v0,smjer){
+    
+    if(!this.poziv){
+      this.velocity_y = v0;
+      this.x = x;
+      this.y = y;
+      this.x_0 = x;
+      this.y_0 = y;
+      this.visible = true;
+      this.poziv = true; //ograničava na samo jedno stvaranje metka
+    if(smjer == "desno"){   //smjer metka u ovisnosti o s
+      this.moveRight();
+    }
+    else if(smjer == "lijevo"){
+      this.moveLeft();
+    }
+    else{
+    }
+    }
+    
+  }
+  updatePosition() { //ukida gravitaciju i usporavanje
+    this.x_old = this.x;
+    this.x += this.velocity_x;
+    this.y_old = this.y;
+    this.y += this.velocity_y;
+    
+    if(this.velocity_x < 1 && this.velocity_x >-1){ //kad metak dotakne nešto maknemo ga
+      this.makni()
+      
+    }
+    else if(this.velocity_y < -15 || this.velocity_y > 15){
+      this.makni(); //da metak ne zaobilazi platforme
+    }
+
+  }
+
+  moveRight() {
+    this.direction = 90;
+    this.velocity_x += 6 ;
+  }
+
+  moveLeft() {
+    this.direction = 270;
+    this.velocity_x -= 6 ;
+  }
+
+
+}
