@@ -50,4 +50,8 @@ class Postavke {
     static bm4;
     static bm5;
     static bm6;
+    static bat1; //baterije
+    static bat2;
+    static bat3;
+    static hc; //health coin
 }

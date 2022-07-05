@@ -50,7 +50,7 @@ function Projekt_logika1() {
     let blader_coins = [Postavke.c1,Postavke.c2,Postavke.c3]
     let blasters = [Postavke.blaster1,Postavke.blaster2,Postavke.blaster3]
     let blaster_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
-    let blaster_metci = [[Postavke.bm1,Postavke.bm2],[Postavke.bm3,Postavke.bm4],[Postavke.bm5,Postavke.bm6]]
+    let blaster_metci = [[Postavke.bm1,Postavke.bm2],[Postavke.bm3,Postavke.bm4],[Postavke.bm5,Postavke.bm6]] //improvizirana matrica 2*3 gdje su u svakom retku metci jednog blastera
 
     if (SENSING.left.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveLeft();
@@ -309,6 +309,13 @@ function Projekt_logika2() {
     Postavke.s7,Postavke.s10,Postavke.s11,Postavke.s12,
     Postavke.s13,Postavke.s14,Postavke.s15,Postavke.s16,Postavke.s17] //niz svih skala
   let metci = [ Postavke.m1,Postavke.m2,Postavke.m3,Postavke.m4,Postavke.m5]
+  let bladers = [Postavke.b1]
+  let blader_coins = [Postavke.c1]
+  let baterije = [Postavke.bat1,Postavke.bat2,Postavke.bat3]
+  let batery_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
+  let blasters = [Postavke.blaster1,Postavke.blaster2,Postavke.blaster3]
+  let blaster_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
+  let blaster_metci = [[Postavke.bm1,Postavke.bm2],[Postavke.bm3,Postavke.bm4],[Postavke.bm5,Postavke.bm6]]
 
   if (SENSING.left.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveLeft();
@@ -479,6 +486,117 @@ function Projekt_logika2() {
     Postavke.GlavniLik.pucanje_skale_l = false;
     Postavke.GlavniLik.pucanje_skale_d = false;
   }
+
+   // INTERAKCIJE S NEPRIJATELJIMA
+
+    //BLADERI
+    for(let i = 0; i < bladers.length; i++){ //ako Glavni lik takne bilo kojeg bladera doživi štetu
+      if(Postavke.GlavniLik.touching(bladers[i])){
+        Postavke.GlavniLik.demage(bladers[i])
+        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
+          bladers[i].touch_Glavni_Lik("desno"); //ako dolazi s desna odbit će se desno
+        }
+        else{
+          bladers[i].touch_Glavni_Lik("lijevo");
+        }
+      }
+      if(Postavke.GlavniLik.touching(blader_coins[i])){
+        Postavke.GlavniLik.total_points(blader_coins[i]);
+        blader_coins[i].pokupi()
+      }
+    }
+
+    for(let i = 0;i < metci.length;i++){ //ako metak pogodi bladera on doživi štetu
+      for(let j = 0; j < bladers.length ;j++){
+        if(metci[i].touching(bladers[j])){
+          bladers[j].demage(metci[i],blader_coins[j]); //šaljemo metak kojim je pogođen i coin koji će se stvoriti ako umre
+          metci[i].visible = false;
+        }
+      }
+    }
+
+    //BLASTERI
+    //Glavni lik puca na blaster
+    for(let i = 0;i < metci.length;i++){ 
+      for(let j = 0; j < blasters.length ;j++){
+        if(metci[i].touching(blasters[j])){
+          if(!blasters[j].zatvoren){  //blaster dozivi stetu samo ako je otvoren
+            blasters[j].demage(metci[i],blaster_coins[j]);
+          }
+        }
+      }
+    }
+    //Lik dodiruje blaster
+    for(let j = 0; j < blasters.length ;j++){
+      if(Postavke.GlavniLik.touching(blasters[j])){
+        Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
+        if(smjer=="desno"){
+          Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
+        }
+        else{
+          Postavke.GlavniLik.velocity_x = 100;
+        }
+      }
+      //lik skuplja coine iza blastera
+      if(Postavke.GlavniLik.touching(blaster_coins[j])){
+        Postavke.GlavniLik.total_points(blaster_coins[j]);
+        blaster_coins[j].pokupi()
+      }
+    }
+    //blaster puca
+    for(let j = 0; j < blasters.length ;j++){
+      if(blasters[j].pucanje && blasters[j].visible){ //gledamo je li blaster u stanju pucanja
+          blasters[j].puca(blaster_metci[j]); //ako je puca svoja dva metka
+      }
+    }
+
+    //blaster pogađa lika
+    for(let i = 0;i < blasters.length;i++){  //vrtimo redove matrice
+      for(let j = 0;j < 2; j++){  //vrtimo stupce matrice
+        if(Postavke.GlavniLik.touching(blaster_metci[i][j])){ //promatramo svaki element matrice redom
+          Postavke.GlavniLik.demage(blaster_metci[i][j]);
+          blaster_metci[i][j].visible = false; //ako pogodi glavnog lika micemo metak
+          blaster_metci[i][j].x = blaster_metci[i][j].x_0 //vraćamo metak na početnu poziciju da se ispuca sa pravog mjesta kad bude vidljiv
+          blaster_metci[i][j].y = blaster_metci[i][j].y_0
+        }
+      }
+    }
+
+   //BATERIJE
+   for(let i = 0; i < baterije.length; i++){
+    if(Postavke.GlavniLik.touching(baterije[i])){
+      Postavke.GlavniLik.demage(baterije[i]); //ako lik dotakne bateriju gubi bodove
+      if(smjer == "lijevo"){
+        Postavke.GlavniLik.velocity_x = 100; //ako lik dotakne bateriju odbije se u ovisnosti u koju se stranu posljednji out kretao 
+      }
+      else{
+        Postavke.GlavniLik.velocity_x = -100;
+      }
+    }
+   }
+
+   for(let i = 0; i < metci.length;i++){
+    for(let j = 0; j < baterije.length; j++){
+      if(metci[i].touching(baterije[j])){
+        baterije[j].demage(metci[i],batery_coins[j]);
+        metci[i].velocity_x = 0; //metak nestaje
+      }
+    }
+   }
+
+   for(let i = 0; i<batery_coins.length; i++){
+    if(Postavke.GlavniLik.touching(batery_coins[i])){
+      Postavke.GlavniLik.total_points(batery_coins[i]);
+      batery_coins[i].pokupi()
+    }
+   }
+
+   //HEALTH COIN
+   if(Postavke.GlavniLik.touching(Postavke.hc)){
+    Postavke.GlavniLik.recovery(Postavke.hc);
+    Postavke.hc.visible = false;
+   }
+
 
   bodovi = Postavke.GlavniLik.points;
   zivoti = Postavke.GlavniLik.health;

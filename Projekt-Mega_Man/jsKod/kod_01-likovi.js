@@ -204,6 +204,9 @@ class GlavniLik extends Lik{
     demage(c){
       this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
     }
+    recovery(c){
+      this.health += c.help;
+    }
     total_points(c){
       this.points += c.points;
     }
@@ -428,6 +431,19 @@ class coin extends Item{
   }
 }
 
+class Health_coin extends coin{
+  constructor(layer){
+    super(layer);
+    this.help = 50; //koliko će popraviti zdravlje glavnom liku
+    this.width = 124;
+    this.height = 124;
+  }
+  updatePosition() { //položaj se ne mijenja
+    this.x_old = this.x;
+    this.y_old = this.y;
+  }
+}
+
 class blaster extends Lik{
   constructor(layer){
     super(0,0,layer);
@@ -550,6 +566,91 @@ class bMetak extends Metak{ //ko i obični metak uz promjenu brzina u update pos
     this.direction = 270;
     this.velocity_x -= 6 ;
   }
+}
 
+class Batery extends Lik{
+  constructor(layer){
+    super(0,0,layer);
+
+    this.frame_sets={
+      "stoji" : [21],
+      "kretanje": [22]
+    }
+
+    this.visible = true;
+    this.velocity_x = 0;
+    this.velocity_y = 0;
+    this.smjer = null; //smjer kretanja
+    this.value = 10;
+    this.health = 40;
+    this.vrijeme = 0; //tajmer
+  }
+
+  updateAnimation() {
+    if(this.velocity_x > 3 || this.velocity_x < -3 ||this.velocity_y >3 || this.velocity_y < -3 )this.changeFrameSet(this.frameSets("kretanje"), "pause");
+    else this.changeFrameSet(this.frameSets("stoji"), "pause");
+    this.animate();
+  }
+
+  start(x,y,smjer){
+    this.x = x;
+    this.y = y;
+    this.smjer = smjer;
+  }
+  demage(c,coin){
+    this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
+    if(this.health <= 0){
+      this.visible = false; 
+      coin.stvori(this.x,this.y) //ako blader umre stvaramo coin na tom mjestu
+    }
+   }
+
+   updatePosition() { //ukida gravitaciju i usporavanje
+    this.x_old = this.x;
+    this.x += this.velocity_x;
+    this.y_old = this.y;
+    this.y += this.velocity_y;
+    this.vrijeme += 1;
+    if(this.smjer == "desno"){ //određuje oce li se gibat lijevo desno ili gore dolje
+      if(this.vrijeme < 100){ //vremenski određeno kad mijenja smijer gibanja
+        this.moveRight();
+      }
+      else if(this.vrijeme < 200){
+        this.moveLeft();
+      }
+      else{
+        this.vrijeme = 0;
+      }
+    }
+    if(this.smjer == "gore"){
+      if(this.vrijeme < 40){
+        this.moveUp();
+      }
+      else if(this.vrijeme < 80){
+        this.moveDown();
+      }
+      else{
+        this.vrijeme = 0;
+      }
+    }
+  }
+
+  moveRight() {
+    this.direction = 90;
+    this.velocity_x += 1;
+  }
+
+  moveLeft() {
+      this.direction = 270; 
+      this.velocity_x -= 1; 
+    }
+  moveUp() {
+      this.direction = 0;
+      this.velocity_y -= 1;
+    }
+  moveDown() {
+      this.direction = 180;
+      this.velocity_y += 1;
+    }
 
 }
