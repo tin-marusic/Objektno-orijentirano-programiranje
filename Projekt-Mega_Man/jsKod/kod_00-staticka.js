@@ -54,4 +54,12 @@ class Postavke {
     static bat2;
     static bat3;
     static hc; //health coin
+    static SniperJoe;
+    static sm1; //SniperJoe metci
+    static sm2;
+    static sm3;
+    static sm4;
+    static sm5;
+    static ec; //coin za završit igru
+    static first_setup; //true ili false - služi za resetiranje bodova i zivota pri novom setupu
 }

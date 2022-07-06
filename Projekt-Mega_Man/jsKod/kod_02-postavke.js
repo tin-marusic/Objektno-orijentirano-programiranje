@@ -31,14 +31,17 @@ function setup() {
   switch (odabrana) {
     case "Prvi_dio_1":
       setupPrvi_dio_1(0,13.98*64);
+      Postavke.first_setup = true;
       break;
 
       case "Drugi_dio_1":
         setupDrugi_dio_1(17*64,14.4*64);
+        Postavke.first_setup = true;
         break;
 
       case "Treci_dio_1":
         setupTreci_dio_1(1*64,2*64);
+        Postavke.first_setup = true;
         break;
 
     default:
@@ -50,14 +53,17 @@ function setup() {
 }
 function spusti1(){  //postavljamo setup za prvu mapu, ali lika postavljamo na skale na vrhu
   setupPrvi_dio_1(17*64,0.72*64)
+  Postavke.first_setup = false;
 }
 
 function podigni1(){
   setupDrugi_dio_1(17*64,14.4*64)
+  Postavke.first_setup = false;
 }
 
 function spusti2(){  //postavljamo setup za prvu mapu, ali lika postavljamo na skale na vrhu
   setupDrugi_dio_1(1*64,0.72*64)
+  Postavke.first_setup = false;
 }
 
 function setupPrvi_dio_1(x,y) {
@@ -300,7 +306,7 @@ function setupDrugi_dio_1(x,y) {
     GAME.addSprite(Postavke.s15);
 
     Postavke.s16 = new Skale(GAME.getSpriteLayer("skale_gornje"));
-    Postavke.s16.start(17*64,14*63.98);
+    Postavke.s16.start(17*64,14*63.92);
     Postavke.s16.gornje_skale = true;
     Postavke.s16.donje_skale = false;
     GAME.addSprite(Postavke.s16);
@@ -462,15 +468,89 @@ function setupTreci_dio_1() {
     GAME.addSprite(Postavke.platforma2);
 
     Postavke.spike1 = new siljci(GAME.getSpriteLayer("siljci"));
-    Postavke.spike1.start(7*64,11*63.98);
+    Postavke.spike1.start(8*64,11*63.98);
     GAME.addSprite(Postavke.spike1);
 
     Postavke.spike2 = new siljci(GAME.getSpriteLayer("siljci"));
-    Postavke.spike2.start(10*64,11*63.98);
+    Postavke.spike2.start(11*64,11*63.98);
     GAME.addSprite(Postavke.spike2);
 
+    Postavke.blaster1 = new blaster3(GAME.getSpriteLayer("Blaster1"));
+    Postavke.blaster1.start(13*64,12*64);
+    Postavke.blaster1.smjer = "lijevo";
+    GAME.addSprite(Postavke.blaster1);
+
+    Postavke.blaster2 = new blaster3(GAME.getSpriteLayer("Blaster2"));
+    Postavke.blaster2.start(6*64,8*64);
+    Postavke.blaster2.smjer = "desno";
+    GAME.addSprite(Postavke.blaster2);
+
+    Postavke.blaster3 = new blaster3(GAME.getSpriteLayer("Blaster3"));
+    Postavke.blaster3.start(7*64,7*64);
+    Postavke.blaster3.smjer = "desno";
+    GAME.addSprite(Postavke.blaster3);
+
+    Postavke.bm1 = new bMetak(GAME.getSpriteLayer("bm1"));
+    GAME.addSprite(Postavke.bm1);
+    Postavke.bm2 = new bMetak(GAME.getSpriteLayer("bm2"));
+    GAME.addSprite(Postavke.bm2);
+    Postavke.bm3 = new bMetak(GAME.getSpriteLayer("bm3"));
+    GAME.addSprite(Postavke.bm3);
+    Postavke.bm4 = new bMetak(GAME.getSpriteLayer("bm4"));
+    GAME.addSprite(Postavke.bm4);
+    Postavke.bm5 = new bMetak(GAME.getSpriteLayer("bm5"));
+    GAME.addSprite(Postavke.bm5);
+    Postavke.bm6 = new bMetak(GAME.getSpriteLayer("bm6"));
+    GAME.addSprite(Postavke.bm6);
+
+    Postavke.bat1 = new Batery(GAME.getSpriteLayer("Batery1"))
+    Postavke.bat1.start(17*64,12*64,"desno")
+    GAME.addSprite(Postavke.bat1);
+
+    Postavke.bat2 = new Batery(GAME.getSpriteLayer("Batery2"))
+    Postavke.bat2.start(1*64,6*64,"desno")
+    GAME.addSprite(Postavke.bat2);
+
+    Postavke.bat3 = new Batery(GAME.getSpriteLayer("Batery3"))
+    Postavke.bat3.start(1*64,7*64,"gore")
+    GAME.addSprite(Postavke.bat3);
+
+
+    Postavke.c1 = new coin(GAME.getSpriteLayer("coin1"));
+    GAME.addSprite(Postavke.c1);
+    Postavke.c2 = new coin(GAME.getSpriteLayer("coin2"));
+    GAME.addSprite(Postavke.c2);
+    Postavke.c3 = new coin(GAME.getSpriteLayer("coin3"));
+    GAME.addSprite(Postavke.c3);
+    Postavke.c4 = new coin(GAME.getSpriteLayer("coin4"));
+    GAME.addSprite(Postavke.c4);
+    Postavke.c5 = new coin(GAME.getSpriteLayer("coin5"));
+    GAME.addSprite(Postavke.c5);
+    Postavke.c6 = new coin(GAME.getSpriteLayer("coin6"));
+    GAME.addSprite(Postavke.c6);
+
+  Postavke.SniperJoe = new SniperJoe(GAME.getSpriteLayer("Sniper_Joe"));
+  Postavke.SniperJoe.start(12*64,5*64);
+  GAME.addSprite(Postavke.SniperJoe);
+
+  Postavke.sm1 = new Metak(GAME.getSpriteLayer("sm1"));
+  GAME.addSprite(Postavke.sm1);
+  Postavke.sm2 = new Metak(GAME.getSpriteLayer("sm2"));
+  GAME.addSprite(Postavke.sm2);
+  Postavke.sm3 = new Metak(GAME.getSpriteLayer("sm3"));
+  GAME.addSprite(Postavke.sm3);
+  Postavke.sm4 = new Metak(GAME.getSpriteLayer("sm4"));
+  GAME.addSprite(Postavke.sm4);
+  Postavke.sm5 = new Metak(GAME.getSpriteLayer("sm5"));
+  GAME.addSprite(Postavke.sm5);   
+
+  Postavke.ec = new coin(GAME.getSpriteLayer("end_coin"));
+  Postavke.ec.width = 150;
+  Postavke.ec.height = 150;
+  GAME.addSprite(Postavke.ec);
 
   Postavke.GlavniLik = new GlavniLik(GAME.getSpriteLayer("Glavni lik")); //glavni lik stvoren zadni da bude ispred skala
+  //Postavke.GlavniLik.start(6*64,5*64);
   Postavke.GlavniLik.start(1*64,14.35*64);
   GAME.addSprite(Postavke.GlavniLik);
 }

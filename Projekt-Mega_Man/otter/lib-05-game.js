@@ -395,7 +395,7 @@ class Sprite extends GameWorldObjectAnimator {
    * @param {Sprite} sprite lik
    * @returns {boolean}
    */
-  touching(sprite) {
+  oldtouching(sprite) {
     if (sprite.visible == false) return false;
 
     let a = {
@@ -422,6 +422,77 @@ class Sprite extends GameWorldObjectAnimator {
 
     return result;
   } //// touching
+
+  touching(sprite) { //novi touching
+    if (sprite.visible == false) return false;
+    let a = 0;
+    let b = 0;
+    try{
+      if(!(typeof(this.sirina) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(this.visina) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(this.startx) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(this.starty) == "number")){
+        throw new Error("Greska")
+      }
+      a = {
+        left: this.startx,
+        right: this.startx + this.sirina,
+        top: this.starty,
+        bottom: this.starty + this.visina,
+      };
+    }
+    catch(err){
+      a = {
+        left: this.x,
+        right: this.x + this.width,
+        top: this.y,
+        bottom: this.y + this.height
+      };
+    }
+    try{
+      if(!(typeof(sprite.sirina) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(sprite.visina) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(sprite.startx) == "number")){
+        throw new Error("Greska")
+      }
+      if(!(typeof(sprite.starty) == "number")){
+        throw new Error("Greska")
+      }
+      b = {
+        left: sprite.startx,
+        right: sprite.startx + sprite.sirina,
+        top: sprite.starty,
+        bottom: sprite.starty + sprite.visina,
+      };
+    }
+    catch(err){
+      b = {
+        left: sprite.x,
+        right: sprite.x + sprite.width,
+        top: sprite.y,
+        bottom: sprite.y + sprite.height
+      };
+    }
+    
+    let result = a.left <= b.right &&
+      b.left <= a.right &&
+      a.top <= b.bottom &&
+      b.top <= a.bottom;
+    
+    // samo lijevo i desno ne radi
+    // let result = a.left <= b.right && b.left <= a.right;
+    return result;
+  }
 
   /**
    * Provjerava je li lik kliknut.

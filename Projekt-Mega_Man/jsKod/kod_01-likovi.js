@@ -16,6 +16,8 @@ class Lik extends Sprite {
   
       this.layer = layer;
       this.visible = true;
+      
+      this.okvir = false;
     }
   
     jump(h = 35) {
@@ -24,7 +26,6 @@ class Lik extends Sprite {
   
         this.jumping = true;
         this.velocity_y = -h;
-  
       }
     }
   
@@ -51,12 +52,11 @@ class GlavniLik extends Lik{
             "skale":[35,36,37,38],
             "skale_stoji":[35]
         };
-        this.okvir = true;
+        this.okvir = false;
         this.gravity = 2;
         this.friction = 0.8;
         this.health = 100;
         this.points = 0;
-
     }
 
     updateAnimation() {
@@ -247,7 +247,6 @@ class Metak extends Item{
     this.i = 1;
     this.value = 10; //šteta koju nanosi protivniku
     this.poziv = false;
-    this.okvir = true;
   }
 
   vidljivost(x,y,smjer){
@@ -281,7 +280,6 @@ class Metak extends Item{
     this.x += this.velocity_x;
     this.y_old = this.y;
     this.y += this.velocity_y;
-    this.g += 1;
     if(this.velocity_x < 10.5 && this.velocity_x >-10.5){ //kad metak dotakne nešto maknemo ga
       this.makni()
     }
@@ -336,6 +334,16 @@ class siljci extends Item{
   updatePosition() { //položaj se ne mijenja
     this.x_old = this.x;
     this.y_old = this.y;
+  }
+  razlika(c){  //za odrediti s koje strane lik dolazi na šiljke
+    let raz = this.y - c.y;
+    if(raz > 0){
+      return true;
+    }
+    else{
+      c.velocity_y = 0;
+      return false;
+    }
   }
 }
 
@@ -419,7 +427,11 @@ class coin extends Item{
     this.points = 10; 
     this.width = 50;
     this.height = 50;
-    this.okvir = true;
+    this.sirina = 16; //za novu funkciju touching
+    this.visina = 16;
+    this.startx = this.x; 
+    this.starty = this.y;
+    this.okvir = false;
   }
   stvori(x,y){
     this.x = x;
@@ -429,6 +441,18 @@ class coin extends Item{
   pokupi(){
     this.visible = false;
   }
+  updatePosition(gravity = 0, friction = 0) {
+    this.x_old = this.x;
+    this.y_old = this.y;
+    this.velocity_y += gravity;
+    this.x += this.velocity_x;
+    this.y += this.velocity_y;
+
+    this.velocity_x *= friction;
+    this.velocity_y *= friction;
+    this.startx = this.x; 
+    this.starty = this.y
+  }
 }
 
 class Health_coin extends coin{
@@ -437,10 +461,16 @@ class Health_coin extends coin{
     this.help = 50; //koliko će popraviti zdravlje glavnom liku
     this.width = 124;
     this.height = 124;
+    this.sirina = 32; //za novu funkciju touching
+    this.visina = 32;
+    this.startx = this.x;
+    this.starty = this.y
   }
   updatePosition() { //položaj se ne mijenja
     this.x_old = this.x;
     this.y_old = this.y;
+    this.startx = this.x;
+    this.starty = this.y
   }
 }
 
@@ -516,9 +546,23 @@ class blaster extends Lik{
 
 }
 
+class blaster3 extends blaster{  //samo promjenjena brzina pucanja za treću mapu
+  constructor(layer){
+    super(layer);
+  }
+  puca(c){ //prima niz od dva metka
+    c[0].visible = true; //za slučaj da je metak pogodio lika pa je visible false
+    c[1].visible = true;
+    c[0].vidljivost(this.x,this.y,-4,this.smjer); //svakom  zadaje početnu brzinu u y smjeru i pocetni polozaj
+    c[1].vidljivost(this.x,this.y,4,this.smjer);
+  }
+}
+
 class bMetak extends Metak{ //ko i obični metak uz promjenu brzina u update position
   constructor(layer){
     super(layer);
+    this.width = 20;
+    this.height = 20;
   }
   vidljivost(x,y,v0,smjer){
     
@@ -653,4 +697,129 @@ class Batery extends Lik{
       this.velocity_y += 1;
     }
 
+}
+
+class SniperJoe extends Lik{
+  constructor(layer){
+    super(0,0,layer);
+
+    this.frame_sets={
+      "stoji_l" : [81],
+      "stoji_d" : [85],
+      "pucanje_l": [82,83,84],
+      "pucanje_d": [86,87,88]
+    }
+
+    this.visible = true;
+    this.health = 50;
+    this.vrijeme = 0; //tajmer
+    this.stojil = true; //za animacije
+    this.stojid = false;
+    this.pucanjel = false;
+    this.pucanjed = false;
+    this.okvir = true;
+    this.gravity = 1.2;
+    this.friction = 0.8;
+    this.height = 64;
+    this.width = 64;
+    this.smjer = "lijevo";
+  }
+
+  jump(h = 25) {
+  
+    if (!this.jumping) {
+
+      this.jumping = true;
+      this.velocity_y = -h;
+
+    }
+  }
+
+  updatePosition() {
+    this.x_old = this.x;
+    this.y_old = this.y;
+    this.velocity_y += this.gravity;
+    this.x += this.velocity_x;
+    this.y += this.velocity_y;
+
+    this.velocity_x *= this.friction;
+    this.velocity_y *= this.friction;
+    if(Postavke.platforma1.visible){
+      this.vrijeme += 1;
+      if(this.vrijeme > 150){
+        this.vrijeme = 0;
+      }
+      else if(this.vrijeme < 70 && Postavke.GlavniLik.x < this.x){
+        this.stojil = true;
+        this.stojid = false;
+        this.pucanjel = false;
+        this.pucanjed = false;
+      }
+      else if(this.vrijeme > 70 && Postavke.GlavniLik.x < this.x){
+        this.pucanjel = true;
+        this.stojil = false;
+        this.stojid = false;
+        this.pucanjed = false;
+        this.smjer = "lijevo";
+      }
+      if(this.vrijeme < 70 && Postavke.GlavniLik.x > this.x){
+        this.stojid = true;
+        this.pucanjed = false;
+        this.stojil = false;
+        this.pucanjel = false;
+      }
+      else if(this.vrijeme > 70 && Postavke.GlavniLik.x > this.x){
+        this.pucanjed = true;
+        this.stojid = false;
+        this.stojil = false;
+        this.pucanjel = false;
+        this.smjer = "desno";
+      }
+      
+    }
+    
+  }
+
+  updateAnimation() {
+    if(this.stojil)this.changeFrameSet(this.frameSets("stoji_l"), "pause");
+    else if(this.stojid) this.changeFrameSet(this.frameSets("stoji_d"), "pause" );
+    else if(this.pucanjed) this.changeFrameSet(this.frameSets("pucanje_d"), "loop" ,5);
+    else if(this.pucanjel) this.changeFrameSet(this.frameSets("pucanje_l"),"loop",5)
+    this.animate();
+  }
+
+  start(x,y){
+    this.x = x;
+    this.y = y;
+  }
+
+  puca(g){
+    let x = this.x +32 ; //postavljamo na centar lika
+    let y = this.y + 23 ;
+    g.vidljivost(x,y,this.smjer);
+  }
+
+  demage(c){//,coin){
+    this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
+    if(this.health <= 0){
+      this.pucanjel = false; //da ne puca nakon što nestane
+      this.pucanjed = false;
+      this.visible = false; 
+      //coin.stvori(this.x,this.y) //ako blader umre stvaramo coin na tom mjestu
+    }
+   }
+
+   dodir(c){ //ako glavni lik dotakne Sniper Joea odbije se
+      let udaljenost_x = this.x - c.x;
+      let udaljenost_y = this.y - c.y;
+      if(udaljenost_x < 0){
+        c.velocity_x += 100;
+      }
+      else{
+        c.velocity_x -= 100;
+      }
+      if(udaljenost_y > 0){
+        c.velocity_y -= 30;
+      }
+   }
 }

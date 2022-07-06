@@ -23,9 +23,8 @@ function update_main() {
     }
   
     GAME.update();
-    GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
-    GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
-
+    
+    
   
 };
 let bodovi = 0; //varijable pomoću kojih ćemo čuvati bodove i živote pri prijelazu među levelima
@@ -39,6 +38,15 @@ let ukini_kretnje = false //za ukidanje micanja lijevo i desno na skalama
 let smjer = null; //smjer pucanja na skalama
 
 function Projekt_logika1() {
+    GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
+    GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
+
+    if(Postavke.first_setup){  //ako je prvi setup postavljamo parametre na pocetak
+      bodovi = 0;
+      zivoti = 100;
+    }
+    Postavke.first_setup = false; //da izbacimo petlju iz loopa do iduceg setupa
+
     Postavke.GlavniLik.points = bodovi;
     Postavke.GlavniLik.health = zivoti;
     
@@ -152,6 +160,7 @@ function Projekt_logika1() {
                 //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
                 Postavke.GlavniLik.velocity_y = 0;
                 Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+                Postavke.GlavniLik.on_top = true;
               }
             }
           }  
@@ -302,6 +311,9 @@ function Projekt_logika1() {
 }
 
 function Projekt_logika2() {
+  GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
+  GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
+
   Postavke.GlavniLik.points = bodovi;
   Postavke.GlavniLik.health = zivoti;
  
@@ -417,6 +429,7 @@ function Projekt_logika2() {
               //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
               Postavke.GlavniLik.velocity_y = 0;
               Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+              Postavke.GlavniLik.on_top = true;
             }
           }
         }  
@@ -443,7 +456,7 @@ function Projekt_logika2() {
     down_pritisnut = false; //strelica prema dolje puštena
   }
   if(!Postavke.GlavniLik.jumping){ //ako lik pada neće moći skočiti
-    if(Postavke.GlavniLik.velocity_y>2.7){
+    if(Postavke.GlavniLik.velocity_y>1.7){
       Postavke.GlavniLik.jumping = true;
     }
   }
@@ -602,7 +615,11 @@ function Projekt_logika2() {
   zivoti = Postavke.GlavniLik.health;
 }
 
-function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
+function Projekt_logika3() {  
+
+  GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
+  GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
+  GameSettings.output("Životi Sniper Joe:"+Postavke.SniperJoe.health,false);
 
   Postavke.GlavniLik.points = bodovi;
   Postavke.GlavniLik.health = zivoti;
@@ -610,6 +627,12 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
   let v = [Postavke.s1,Postavke.s2,Postavke.s3,Postavke.s10,Postavke.s11,Postavke.s12
           ,Postavke.s16,Postavke.s17] //niz svih skala
   let metci = [ Postavke.m1,Postavke.m2,Postavke.m3,Postavke.m4,Postavke.m5]
+  let baterije = [Postavke.bat1,Postavke.bat2,Postavke.bat3]
+  let batery_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
+  let blasters = [Postavke.blaster1,Postavke.blaster2,Postavke.blaster3]
+  let blaster_coins = [Postavke.c4,Postavke.c5,Postavke.c6]
+  let blaster_metci = [[Postavke.bm1,Postavke.bm2],[Postavke.bm3,Postavke.bm4],[Postavke.bm5,Postavke.bm6]]
+  let Sniper_Joe_metci = [ Postavke.sm1,Postavke.sm2,Postavke.sm3,Postavke.sm4,Postavke.sm5]
 
   if (SENSING.left.active && !dodir_platforma_nevidljiva && !ukini_kretnje) {  //stavljamo ograničenje da se ne kreće lijevo ako dira "nevidljivu" platformu
     Postavke.GlavniLik.moveLeft();
@@ -711,6 +734,7 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
               //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
               Postavke.GlavniLik.velocity_y = 0;
               Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+              Postavke.GlavniLik.on_top = true;
             }
           }
         }  
@@ -796,8 +820,130 @@ function Projekt_logika3() {  //logika za trecu mapu, slicno ko i za prve dvi
     dodir_platforma_nevidljiva = false; //kad ne platforme dira vraćamo mogućnost kretanja lijevo
   }
   if(Postavke.GlavniLik.touching(Postavke.spike1) ||Postavke.GlavniLik.touching(Postavke.spike2)){
-    Postavke.GlavniLik.demage(Postavke.spike1)
+    if(Postavke.spike1.razlika(Postavke.GlavniLik)){
+      Postavke.GlavniLik.demage(Postavke.spike1)
+    }
   }
+
+   // INTERAKCIJE S NEPRIJATELJIMA
+
+   //BLASTERI
+    //Glavni lik puca na blaster
+    for(let i = 0;i < metci.length;i++){ 
+      for(let j = 0; j < blasters.length ;j++){
+        if(metci[i].touching(blasters[j])){
+          if(!blasters[j].zatvoren){  //blaster dozivi stetu samo ako je otvoren
+            blasters[j].demage(metci[i],blaster_coins[j]);
+          }
+        }
+      }
+    }
+    //Lik dodiruje blaster
+    for(let j = 0; j < blasters.length ;j++){
+      if(Postavke.GlavniLik.touching(blasters[j])){
+        Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
+        if(smjer=="desno"){
+          Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
+        }
+        else{
+          Postavke.GlavniLik.velocity_x = 100;
+        }
+      }
+      //lik skuplja coine iza blastera
+      if(Postavke.GlavniLik.touching(blaster_coins[j])){
+        Postavke.GlavniLik.total_points(blaster_coins[j]);
+        blaster_coins[j].pokupi()
+      }
+    }
+    //blaster puca
+    for(let j = 0; j < blasters.length ;j++){
+      if(blasters[j].pucanje && blasters[j].visible){ //gledamo je li blaster u stanju pucanja
+          blasters[j].puca(blaster_metci[j]); //ako je puca svoja dva metka
+      }
+    }
+
+    //blaster pogađa lika
+    for(let i = 0;i < blasters.length;i++){  //vrtimo redove matrice
+      for(let j = 0;j < 2; j++){  //vrtimo stupce matrice
+        if(Postavke.GlavniLik.touching(blaster_metci[i][j])){ //promatramo svaki element matrice redom
+          Postavke.GlavniLik.demage(blaster_metci[i][j]);
+          blaster_metci[i][j].visible = false; //ako pogodi glavnog lika micemo metak
+          blaster_metci[i][j].x = blaster_metci[i][j].x_0 //vraćamo metak na početnu poziciju da se ispuca sa pravog mjesta kad bude vidljiv
+          blaster_metci[i][j].y = blaster_metci[i][j].y_0
+        }
+      }
+    }
+
+   //BATERIJE
+   for(let i = 0; i < baterije.length; i++){
+    if(Postavke.GlavniLik.touching(baterije[i])){
+      Postavke.GlavniLik.demage(baterije[i]); //ako lik dotakne bateriju gubi bodove
+      if(smjer == "lijevo"){
+        Postavke.GlavniLik.velocity_x = 100; //ako lik dotakne bateriju odbije se u ovisnosti u koju se stranu posljednji out kretao 
+      }
+      else{
+        Postavke.GlavniLik.velocity_x = -100;
+      }
+    }
+   }
+
+   for(let i = 0; i < metci.length;i++){
+    for(let j = 0; j < baterije.length; j++){
+      if(metci[i].touching(baterije[j])){
+        baterije[j].demage(metci[i],batery_coins[j]);
+        metci[i].makni(); //metak nestaje
+      }
+    }
+   }
+
+   for(let i = 0; i<batery_coins.length; i++){
+    if(Postavke.GlavniLik.touching(batery_coins[i])){
+      Postavke.GlavniLik.total_points(batery_coins[i]);
+      batery_coins[i].pokupi()
+    }
+   }
+
+   //SNIPER JOE
+
+   if(Postavke.GlavniLik.jumping && (Postavke.SniperJoe.pucanjed || Postavke.SniperJoe.pucanjel)){ 
+    Postavke.SniperJoe.jump();
+   }
+
+  if(Postavke.SniperJoe.pucanjed || Postavke.SniperJoe.pucanjel){ //ako je Sniper Joe u stanju puacnja u određenim trenutcima će pucati
+    if(Postavke.SniperJoe.vrijeme == 71 || Postavke.SniperJoe.vrijeme == 90 || Postavke.SniperJoe.vrijeme == 110 || Postavke.SniperJoe.vrijeme == 130 || Postavke.SniperJoe.vrijeme == 150 ){
+      for(let i = 0; i < Sniper_Joe_metci.length ; i++){
+        if(!Sniper_Joe_metci[i].poziv){ //ako metak nije na mapi
+          Postavke.SniperJoe.puca(Sniper_Joe_metci[i]);
+          break; //prekini nakon što ispuca jedan
+        }
+      }
+    }
+  }
+
+  for(let i = 0; i < Sniper_Joe_metci.length ; i++){ //ako Sniper Joe pogodi Glavnog lika
+    if(Postavke.GlavniLik.touching(Sniper_Joe_metci[i])){
+      Postavke.GlavniLik.demage(Sniper_Joe_metci[i]);
+      Sniper_Joe_metci[i].makni();
+    }
+  }
+
+  if(Postavke.SniperJoe.pucanjed || Postavke.SniperJoe.pucanjel){ //ako glavni lik pogodi Sniper Joea
+    for(let i = 0; i < metci.length ; i++){
+      if(metci[i].touching(Postavke.SniperJoe)){
+        Postavke.SniperJoe.demage(metci[i]);
+        metci[i].makni();
+      }
+    }
+  }
+
+  if(Postavke.GlavniLik.touching(Postavke.SniperJoe)){
+    Postavke.SniperJoe.dodir(Postavke.GlavniLik);
+  }
+
+  if(!Postavke.SniperJoe.visible){
+    Postavke.ec.stvori(Postavke.SniperJoe.x,Postavke.SniperJoe.y);
+  }
+
 
   bodovi = Postavke.GlavniLik.points;
   zivoti = Postavke.GlavniLik.health;
