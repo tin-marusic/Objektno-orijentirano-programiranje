@@ -203,12 +203,25 @@ class GlavniLik extends Lik{
     }
     demage(c){
       this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
+      if(this.health <= 0){
+        GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
+        GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
+        btnStop_click(); //igrica se prekida ako lik izgubi sve zivote
+        console.log("Poraz");
+      }
     }
     recovery(c){
       this.health += c.help;
+      if(this.health > 100){
+        this.health = 100;
+      }
     }
     total_points(c){
       this.points += c.points;
+    }
+    win(){
+      btnStop_click(); //igrica se prekida ako lik skupi win coin
+      console.log("Pobjeda");
     }
 
 }

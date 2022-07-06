@@ -306,7 +306,7 @@ function setupDrugi_dio_1(x,y) {
     GAME.addSprite(Postavke.s15);
 
     Postavke.s16 = new Skale(GAME.getSpriteLayer("skale_gornje"));
-    Postavke.s16.start(17*64,14*63.92);
+    Postavke.s16.start(17*64,14*63.99);
     Postavke.s16.gornje_skale = true;
     Postavke.s16.donje_skale = false;
     GAME.addSprite(Postavke.s16);

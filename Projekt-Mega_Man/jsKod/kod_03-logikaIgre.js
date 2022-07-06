@@ -159,7 +159,7 @@ function Projekt_logika1() {
               if(-64 < skale_likx && skale_likx < 64 && skale_liky < -48){ //da ne uzme y krivih gornjih skala
                 //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
                 Postavke.GlavniLik.velocity_y = 0;
-                Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+                Postavke.GlavniLik.y = v[i].y - 55.9; //postavljamo lik na vrh skala
                 Postavke.GlavniLik.on_top = true;
               }
             }
@@ -428,7 +428,7 @@ function Projekt_logika2() {
             if(-64 < skale_likx && skale_likx < 64 && skale_liky < -48){ //da ne uzme y krivih gornjih skala
               //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
               Postavke.GlavniLik.velocity_y = 0;
-              Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+              Postavke.GlavniLik.y = v[i].y - 55.9; //postavljamo lik na vrh skala
               Postavke.GlavniLik.on_top = true;
             }
           }
@@ -733,7 +733,7 @@ function Projekt_logika3() {
             if(-64 < skale_likx && skale_likx < 64 && skale_liky < -48){ //da ne uzme y krivih gornjih skala
               //skale_liky < -52 sluzi da ako skočimo sa strane na skale ne vraca nas na vrh
               Postavke.GlavniLik.velocity_y = 0;
-              Postavke.GlavniLik.y = v[i].y - 55; //postavljamo lik na vrh skala
+              Postavke.GlavniLik.y = v[i].y - 55.9; //postavljamo lik na vrh skala
               Postavke.GlavniLik.on_top = true;
             }
           }
@@ -942,6 +942,10 @@ function Projekt_logika3() {
 
   if(!Postavke.SniperJoe.visible){
     Postavke.ec.stvori(Postavke.SniperJoe.x,Postavke.SniperJoe.y);
+  }
+
+  if(Postavke.GlavniLik.touching(Postavke.ec)){
+    Postavke.GlavniLik.win();
   }
 
 
