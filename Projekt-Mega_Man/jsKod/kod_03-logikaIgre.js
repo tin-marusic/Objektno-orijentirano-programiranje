@@ -237,7 +237,7 @@ function Projekt_logika1() {
     for(let i = 0; i < bladers.length; i++){ //ako Glavni lik takne bilo kojeg bladera doživi štetu
       if(Postavke.GlavniLik.touching(bladers[i])){
         Postavke.GlavniLik.demage(bladers[i])
-        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
+        if(bladers[i].x_distance(Postavke.GlavniLik) > 32){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
           bladers[i].touch_Glavni_Lik("desno"); //ako dolazi s desna odbit će se desno
         }
         else{
@@ -311,6 +311,12 @@ function Projekt_logika1() {
 }
 
 function Projekt_logika2() {
+  if(Postavke.first_setup){  //ako je prvi setup postavljamo parametre na pocetak
+    bodovi = 0;
+    zivoti = 100;
+  }
+  Postavke.first_setup = false; //da izbacimo petlju iz loopa do iduceg setupa
+
   GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
   GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
 
@@ -506,7 +512,7 @@ function Projekt_logika2() {
     for(let i = 0; i < bladers.length; i++){ //ako Glavni lik takne bilo kojeg bladera doživi štetu
       if(Postavke.GlavniLik.touching(bladers[i])){
         Postavke.GlavniLik.demage(bladers[i])
-        if(bladers[i].x_distance(Postavke.GlavniLik) > 50){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
+        if(bladers[i].x_distance(Postavke.GlavniLik) > 32){ //računa udaljenost među likovima da odredimo stanu s koje dolazi blader
           bladers[i].touch_Glavni_Lik("desno"); //ako dolazi s desna odbit će se desno
         }
         else{
@@ -616,6 +622,12 @@ function Projekt_logika2() {
 }
 
 function Projekt_logika3() {  
+
+  if(Postavke.first_setup){  //ako je prvi setup postavljamo parametre na pocetak
+    bodovi = 0;
+    zivoti = 100;
+  }
+  Postavke.first_setup = false; //da izbacimo petlju iz loopa do iduceg setupa
 
   GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
   GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
@@ -926,12 +938,11 @@ function Projekt_logika3() {
       Sniper_Joe_metci[i].makni();
     }
   }
-
-  if(Postavke.SniperJoe.pucanjed || Postavke.SniperJoe.pucanjel){ //ako glavni lik pogodi Sniper Joea
-    for(let i = 0; i < metci.length ; i++){
-      if(metci[i].touching(Postavke.SniperJoe)){
+  for(let i = 0; i < metci.length ; i++){
+    if(metci[i].touching(Postavke.SniperJoe)){
+      metci[i].makni();
+      if(Postavke.SniperJoe.pucanjed || Postavke.SniperJoe.pucanjel){ //ako glavni lik pogodi Sniper Joea
         Postavke.SniperJoe.demage(metci[i]);
-        metci[i].makni();
       }
     }
   }

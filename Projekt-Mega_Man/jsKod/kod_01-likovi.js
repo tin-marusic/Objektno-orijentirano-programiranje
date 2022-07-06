@@ -17,7 +17,7 @@ class Lik extends Sprite {
       this.layer = layer;
       this.visible = true;
       
-      this.okvir = false;
+      this.okvir = true;
     }
   
     jump(h = 35) {
@@ -52,11 +52,12 @@ class GlavniLik extends Lik{
             "skale":[35,36,37,38],
             "skale_stoji":[35]
         };
-        this.okvir = false;
         this.gravity = 2;
         this.friction = 0.8;
         this.health = 100;
         this.points = 0;
+        this.sirina = 42; //za novu funkciju touching
+        this.visina = this.height;
     }
 
     updateAnimation() {
@@ -170,6 +171,8 @@ class GlavniLik extends Lik{
         this.velocity_y += this.gravity;
         this.x += this.velocity_x;
         this.y += this.velocity_y;
+        this.startx = this.x + 10; //za novu funkciju touching
+        this.starty = this.y;
     
         this.velocity_x *= this.friction;
         this.velocity_y *= this.friction;
@@ -204,8 +207,9 @@ class GlavniLik extends Lik{
     demage(c){
       this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje
       if(this.health <= 0){
-        GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
+        GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true); 
         GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
+        GameSettings.output("Game Over",false)
         btnStop_click(); //igrica se prekida ako lik izgubi sve zivote
         console.log("Poraz");
       }
@@ -220,6 +224,7 @@ class GlavniLik extends Lik{
       this.points += c.points;
     }
     win(){
+      GameSettings.output("You win",false)
       btnStop_click(); //igrica se prekida ako lik skupi win coin
       console.log("Pobjeda");
     }
@@ -339,10 +344,15 @@ class siljci extends Item{
     super(layer);
     this.visible = true;
     this.value = 100;
+    this.sirina = 44;
+    this.visina = this.height;
+    this.okvir = true;
   }
   start(x,y){
     this.x = x;
     this.y = y;
+    this.startx = this.x + 10;
+    this.starty = this.y;
   }
   updatePosition() { //položaj se ne mijenja
     this.x_old = this.x;
@@ -376,12 +386,17 @@ class Blader extends Lik{
       this.direction = 90;
       this.granica_desno = null;
       this.granica_lijevo = null;
+      this.sirina = 52; //za novu funkciju touching
+      this.visina = this.height;
+      
     }
     updatePosition() { //ukida gravitaciju 
       this.x_old = this.x;
       this.x += this.velocity_x;
       this.y_old = this.y;
       this.y += this.velocity_y;
+      this.startx = this.x + 5; //za novu funkciju touching
+      this.starty = this.y;
       if(this.x < this.granica_lijevo){ //ako prođe zadane granice mjenja smjer kretanja
         this.moveRight();
       }
@@ -506,6 +521,7 @@ class blaster extends Lik{
     this.otvaranje = false; //mijenjat ćemo vrijednosti u update position
     this.pucanje = false;
     this.smjer = null; //smjer u kojem će pucat
+    this.visina = this.height; //za novu funkciju touching
   }
 
   updateAnimation() {
@@ -524,10 +540,20 @@ class blaster extends Lik{
       this.vrijeme = 0;
       this.zatvaranje = true;
       this.pucanje = false;
+      if(this.smjer == "desno"){
+        this.startx  = this.x;
+        this.sirina = 32;
+      }
+      else{
+        this.startx = this.x + 32;  //za novu funkciju touching
+        this.sirina = 32 ; 
+      }
     }
     else if(this.vrijeme > 90){
       this.pucanje = true;
       this.otvaranje = false;
+      this.startx = this.x;  
+      this.sirina = 64 ;    //kad puca zauzima cijeli tile
     }
     else if(this.vrijeme > 70){
       this.otvaranje = true;
@@ -536,11 +562,20 @@ class blaster extends Lik{
     else if(this.vrijeme > 10){
       this.zatvoren = true;
       this.zatvaranje = false;
+      if(this.smjer == "desno"){
+        this.startx  = this.x;
+        this.sirina = 32;
+      }
+      else{
+        this.startx = this.x + 32;  //za novu funkciju touching
+        this.sirina = 32 ; 
+      }
     }
   }
   start(x,y){
     this.x = x;
     this.y = y;
+    this.starty = this.y;
   }
   demage(c,coin){
     this.health -= c.value; //kad neprijatelj pogodi lika zdravlje se smanjuje

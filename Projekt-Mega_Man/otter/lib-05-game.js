@@ -423,7 +423,7 @@ class Sprite extends GameWorldObjectAnimator {
     return result;
   } //// touching
 
-  touching(sprite) { //novi touching
+  touching(sprite) { //novi touching - koristi se samo za coine
     if (sprite.visible == false) return false;
     let a = 0;
     let b = 0;

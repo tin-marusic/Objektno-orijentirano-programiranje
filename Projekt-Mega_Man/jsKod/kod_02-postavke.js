@@ -29,14 +29,15 @@ function setup() {
   GameSettings.output(odabrana);
 
   switch (odabrana) {
-    case "Prvi_dio_1":
-      setupPrvi_dio_1(0,13.98*64);
-      Postavke.first_setup = true;
-      break;
+      case "Prvi_dio_1":
+        setupPrvi_dio_1(0,13.98*64);
+        Postavke.first_setup = true;
+        break;
 
       case "Drugi_dio_1":
         setupDrugi_dio_1(17*64,14.4*64);
         Postavke.first_setup = true;
+        console.log("szvha")
         break;
 
       case "Treci_dio_1":
@@ -44,9 +45,9 @@ function setup() {
         Postavke.first_setup = true;
         break;
 
-    default:
-      throw "Ne postoji setup za " + GAME.activeWorldMap.name;
-      break;
+      default:
+        throw "Ne postoji setup za " + GAME.activeWorldMap.name;
+        break;
   }
 
   render_main();
@@ -468,11 +469,11 @@ function setupTreci_dio_1() {
     GAME.addSprite(Postavke.platforma2);
 
     Postavke.spike1 = new siljci(GAME.getSpriteLayer("siljci"));
-    Postavke.spike1.start(8*64,11*63.98);
+    Postavke.spike1.start(8*64,11*62);
     GAME.addSprite(Postavke.spike1);
 
     Postavke.spike2 = new siljci(GAME.getSpriteLayer("siljci"));
-    Postavke.spike2.start(11*64,11*63.98);
+    Postavke.spike2.start(11*64,11*62);
     GAME.addSprite(Postavke.spike2);
 
     Postavke.blaster1 = new blaster3(GAME.getSpriteLayer("Blaster1"));
