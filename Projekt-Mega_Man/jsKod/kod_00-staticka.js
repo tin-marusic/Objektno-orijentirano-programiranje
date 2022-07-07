@@ -62,4 +62,14 @@ class Postavke {
     static sm5;
     static ec; //coin za završit igru
     static first_setup; //true ili false - služi za resetiranje bodova i zivota pri novom setupu
+    static nula; //brojevi za ispisati broj bodova na kraju
+    static jedan;
+    static dva;
+    static tri;
+    static cetiri;
+    static pet;
+    static sest;
+    static sedam;
+    static osam;
+    static devet;
 }

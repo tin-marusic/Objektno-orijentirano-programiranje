@@ -17,7 +17,7 @@ class Lik extends Sprite {
       this.layer = layer;
       this.visible = true;
       
-      this.okvir = true;
+      this.okvir = false;
     }
   
     jump(h = 35) {
@@ -58,6 +58,7 @@ class GlavniLik extends Lik{
         this.points = 0;
         this.sirina = 42; //za novu funkciju touching
         this.visina = this.height;
+        this.smjer = "desno"; //za animacije - desno ili lijevo
     }
 
     updateAnimation() {
@@ -71,7 +72,7 @@ class GlavniLik extends Lik{
           else this.changeFrameSet(this.frameSets("right"), "pause");
         }
         //ako skace i puca desno
-        else if(this.velocity_x > 0) this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
+        else if(this.smjer === "desno") this.changeFrameSet(this.frameSets("right_pucanje"), "pause");
         //ako skace i puca lijevo
         else this.changeFrameSet(this.frameSets("left_pucanje"), "pause");
       }
@@ -209,7 +210,9 @@ class GlavniLik extends Lik{
       if(this.health <= 0){
         GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true); 
         GameSettings.output("Životi:"+Postavke.GlavniLik.health,false);
-        GameSettings.output("Game Over",false)
+        GameSettings.output("Game Over",false);
+        GAME.setActiveWorldMap("game_over");
+        btnSetupGame.dispatchEvent(gameover);
         btnStop_click(); //igrica se prekida ako lik izgubi sve zivote
         console.log("Poraz");
       }
@@ -224,7 +227,9 @@ class GlavniLik extends Lik{
       this.points += c.points;
     }
     win(){
-      GameSettings.output("You win",false)
+      GameSettings.output("You win",false);
+      GAME.setActiveWorldMap("win_game");
+      btnSetupGame.dispatchEvent(wingamee);
       btnStop_click(); //igrica se prekida ako lik skupi win coin
       console.log("Pobjeda");
     }
@@ -870,4 +875,19 @@ class SniperJoe extends Lik{
         c.velocity_y -= 30;
       }
    }
+}
+
+class broj extends Item{  //za ispisat broj bodova na kraju
+  constructor(layer){
+    super(layer);
+    this.visible = true;
+  }
+  start(x,y){
+    this.x = x;
+    this.y = y;
+  }
+  updatePosition() { //položaj se ne mijenja
+    this.x_old = this.x;
+    this.y_old = this.y;
+  }
 }

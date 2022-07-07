@@ -35,7 +35,6 @@ let up_pritisnut = true;
 let down_pritisnut = false;
 let dodir_platforma_nevidljiva = false; //pomoću ovog ćemo stavit ograničenje na prolazak kroz platformu
 let ukini_kretnje = false //za ukidanje micanja lijevo i desno na skalama
-let smjer = null; //smjer pucanja na skalama
 
 function Projekt_logika1() {
     GameSettings.output("Bodovi:"+Postavke.GlavniLik.points,true);
@@ -62,13 +61,13 @@ function Projekt_logika1() {
 
     if (SENSING.left.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveLeft();
-      smjer = "lijevo";
+      Postavke.GlavniLik.smjer = "lijevo";
       Postavke.GlavniLik.bottom_skale = false;  //pomakne li se lik gasimo animaciju za dno skala
     }
   
     if (SENSING.right.active && !ukini_kretnje) {
       Postavke.GlavniLik.moveRight();
-      smjer = "desno";
+      Postavke.GlavniLik.smjer = "desno";
       Postavke.GlavniLik.bottom_skale = false; 
     }
 
@@ -208,12 +207,12 @@ function Projekt_logika1() {
             }
             else{
               if (SENSING.left.active){
-                smjer = "lijevo";
+                Postavke.GlavniLik.smjer = "lijevo";
               }
               else if (SENSING.right.active){
-                smjer = "desno";
+                Postavke.GlavniLik.smjer = "desno";
               }
-              Postavke.GlavniLik.puca(metci[i],smjer);
+              Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
             }
             
             
@@ -254,7 +253,7 @@ function Projekt_logika1() {
       for(let j = 0; j < bladers.length ;j++){
         if(metci[i].touching(bladers[j])){
           bladers[j].demage(metci[i],blader_coins[j]); //šaljemo metak kojim je pogođen i coin koji će se stvoriti ako umre
-          metci[i].visible = false;
+          metci[i].makni();
         }
       }
     }
@@ -274,7 +273,7 @@ function Projekt_logika1() {
     for(let j = 0; j < blasters.length ;j++){
       if(Postavke.GlavniLik.touching(blasters[j])){
         Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
-        if(smjer=="desno"){
+        if(Postavke.GlavniLik.smjer=="desno"){
           Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
         }
         else{
@@ -337,13 +336,13 @@ function Projekt_logika2() {
 
   if (SENSING.left.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveLeft();
-    smjer = "lijevo";
+    Postavke.GlavniLik.smjer = "lijevo";
     Postavke.GlavniLik.bottom_skale = false;
   }
 
   if (SENSING.right.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveRight();
-    smjer = "desno";
+    Postavke.GlavniLik.smjer = "desno";
     Postavke.GlavniLik.bottom_skale = false;
   }
 
@@ -483,12 +482,12 @@ function Projekt_logika2() {
           }
           else{
             if (SENSING.left.active){
-              smjer = "lijevo";
+              Postavke.GlavniLik.smjer= "lijevo";
             }
             else if (SENSING.right.active){
-              smjer = "desno";
+              Postavke.GlavniLik.smjer = "desno";
             }
-            Postavke.GlavniLik.puca(metci[i],smjer);
+            Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
           }
           
           
@@ -529,7 +528,7 @@ function Projekt_logika2() {
       for(let j = 0; j < bladers.length ;j++){
         if(metci[i].touching(bladers[j])){
           bladers[j].demage(metci[i],blader_coins[j]); //šaljemo metak kojim je pogođen i coin koji će se stvoriti ako umre
-          metci[i].visible = false;
+          metci[i].makni();
         }
       }
     }
@@ -549,7 +548,7 @@ function Projekt_logika2() {
     for(let j = 0; j < blasters.length ;j++){
       if(Postavke.GlavniLik.touching(blasters[j])){
         Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
-        if(smjer=="desno"){
+        if(Postavke.GlavniLik.smjer=="desno"){
           Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
         }
         else{
@@ -585,7 +584,7 @@ function Projekt_logika2() {
    for(let i = 0; i < baterije.length; i++){
     if(Postavke.GlavniLik.touching(baterije[i])){
       Postavke.GlavniLik.demage(baterije[i]); //ako lik dotakne bateriju gubi bodove
-      if(smjer == "lijevo"){
+      if(Postavke.GlavniLik.smjer == "lijevo"){
         Postavke.GlavniLik.velocity_x = 100; //ako lik dotakne bateriju odbije se u ovisnosti u koju se stranu posljednji out kretao 
       }
       else{
@@ -648,13 +647,13 @@ function Projekt_logika3() {
 
   if (SENSING.left.active && !dodir_platforma_nevidljiva && !ukini_kretnje) {  //stavljamo ograničenje da se ne kreće lijevo ako dira "nevidljivu" platformu
     Postavke.GlavniLik.moveLeft();
-    smjer = "lijevo";
+    Postavke.GlavniLik.smjer = "lijevo";
     Postavke.GlavniLik.bottom_skale = false;
   }
 
   if (SENSING.right.active && !ukini_kretnje) {
     Postavke.GlavniLik.moveRight();
-    smjer = "desno";
+    Postavke.GlavniLik.smjer = "desno";
     Postavke.GlavniLik.bottom_skale = false;
   }
 
@@ -794,12 +793,12 @@ function Projekt_logika3() {
           }
           else{
             if (SENSING.left.active){
-              smjer = "lijevo";
+              Postavke.GlavniLik.smjer = "lijevo";
             }
             else if (SENSING.right.active){
-              smjer = "desno";
+              Postavke.GlavniLik.smjer = "desno";
             }
-            Postavke.GlavniLik.puca(metci[i],smjer);
+            Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
           }
           
           
@@ -824,7 +823,7 @@ function Projekt_logika3() {
   if(Postavke.GlavniLik.touching(Postavke.platforma1) || Postavke.GlavniLik.touching(Postavke.platforma2)){
     if(Postavke.GlavniLik.velocity_x < 0){
       Postavke.GlavniLik.velocity_x = 0; //postavimo brzinu na 0 da ne prođe kroz platformu
-      Postavke.GlavniLik.x = Postavke.platforma1.x + 64; //pomaknemo lika malo u desno da može skočiti bez zapinjanja za platformu    
+      Postavke.GlavniLik.x = Postavke.platforma1.x + 54; //pomaknemo lika malo u desno da može skočiti bez zapinjanja za platformu    
     }
     dodir_platforma_nevidljiva = true; //ukidamo mogućnost kretanja lijevo
   }
@@ -854,7 +853,7 @@ function Projekt_logika3() {
     for(let j = 0; j < blasters.length ;j++){
       if(Postavke.GlavniLik.touching(blasters[j])){
         Postavke.GlavniLik.demage(blasters[j]);   //ako lik dotakne blastera dozivi stetu
-        if(smjer=="desno"){
+        if(Postavke.GlavniLik.smjer=="desno"){
           Postavke.GlavniLik.velocity_x = -100;  //kad lik dotakne blastera odbije se
         }
         else{
@@ -890,7 +889,7 @@ function Projekt_logika3() {
    for(let i = 0; i < baterije.length; i++){
     if(Postavke.GlavniLik.touching(baterije[i])){
       Postavke.GlavniLik.demage(baterije[i]); //ako lik dotakne bateriju gubi bodove
-      if(smjer == "lijevo"){
+      if(Postavke.GlavniLik.smjer == "lijevo"){
         Postavke.GlavniLik.velocity_x = 100; //ako lik dotakne bateriju odbije se u ovisnosti u koju se stranu posljednji out kretao 
       }
       else{

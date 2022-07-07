@@ -12,14 +12,18 @@
 let btnSetupGame = document.getElementById("btnSetupGame");
 const levelupEvent1 = new Event("levelup1"); //za prelazak na drugu mapu
 const levelupEvent2 = new Event("levelup2"); //za prelazak na trecu mapu
-const leveldownEvent1 = new Event("leveldown1") //za povratak na prvu mapu
-const leveldownEvent2 = new Event("leveldown2") //za povratak na drugu mapu
+const leveldownEvent1 = new Event("leveldown1"); //za povratak na prvu mapu
+const leveldownEvent2 = new Event("leveldown2"); //za povratak na drugu mapu
+const gameover = new Event("gameover"); //za kraj igrice
+const wingamee = new Event("wingamee");
 
 btnSetupGame.addEventListener("click", setup);
 btnSetupGame.addEventListener("levelup1", podigni1);
 btnSetupGame.addEventListener("leveldown1", spusti1);
 btnSetupGame.addEventListener("levelup2", setupTreci_dio_1);
 btnSetupGame.addEventListener("leveldown2", spusti2);
+btnSetupGame.addEventListener("gameover",setup_gameover)
+btnSetupGame.addEventListener("wingamee",setup_gameover) 
 
 function setup() {
   
@@ -551,7 +555,26 @@ function setupTreci_dio_1() {
   GAME.addSprite(Postavke.ec);
 
   Postavke.GlavniLik = new GlavniLik(GAME.getSpriteLayer("Glavni lik")); //glavni lik stvoren zadni da bude ispred skala
-  //Postavke.GlavniLik.start(6*64,5*64);
   Postavke.GlavniLik.start(1*64,14.35*64);
   GAME.addSprite(Postavke.GlavniLik);
+}
+
+function setup_gameover(){
+
+  GAME.clearSprites();
+
+  brojevi = [0,1,2,3,4,5,6,7,8,9]
+  brojevi_string = ["nula","jedan","dva","tri","cetiri","pet","sest","sedam","osam","devet"]
+  brojevi_staticka = [Postavke.nula,Postavke.jedan,Postavke.dva,Postavke.tri,Postavke.cetiri,
+                      Postavke.pet,Postavke.sest,Postavke.sedam,Postavke.osam,Postavke.devet]
+  const niz = Array.from(String(Postavke.GlavniLik.points), Number);
+  for(let i = 0; i < niz.length; i++){
+    	for(let j = 0;j < brojevi.length ; j++){
+        if(niz[i] === brojevi[j]){
+            brojevi_staticka[j] = new broj(GAME.getSpriteLayer(brojevi_string[j]));
+            brojevi_staticka[j].start(11*64 + i*64,5*64);
+            GAME.addSprite(brojevi_staticka[j]);
+        }
+      }
+  }
 }

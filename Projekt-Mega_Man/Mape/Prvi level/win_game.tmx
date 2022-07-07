@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="11">
+ <editorsettings>
+  <export format="js"/>
+ </editorsettings>
+ <tileset firstgid="1" name="black" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="black.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2" name="gameover" tilewidth="64" tileheight="64" tilecount="240" columns="20">
+  <image source="gameover.png" width="1280" height="817"/>
+ </tileset>
+ <tileset firstgid="242" name="brojevi_1-4" tilewidth="64" tileheight="64" tilecount="4" columns="4">
+  <image source="brojevi_1-4.png" width="256" height="64"/>
+ </tileset>
+ <tileset firstgid="246" name="brojevi_5-8" tilewidth="64" tileheight="64" tilecount="4" columns="4">
+  <image source="brojevi_5-8.png" width="256" height="64"/>
+ </tileset>
+ <tileset firstgid="250" name="brojevi_0" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="brojevi_0.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="251" name="brojevi_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="brojevi_9.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="252" name="win_game" tilewidth="64" tileheight="64" tilecount="24" columns="6">
+  <image source="win_game.png" width="384" height="308"/>
+ </tileset>
+ <layer id="2" name="Pozadina" width="20" height="16">
+  <data encoding="csv">
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,253,253,264,265,266,267,268,269,4,4,4,4,4,4,4,
+4,4,4,4,4,4,26,27,28,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,44,87,88,89,90,91,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,24,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
+</data>
+ </layer>
+ <objectgroup id="3" name="Brojevi">
+  <properties>
+   <property name="class" value="brojevi"/>
+  </properties>
+  <object id="1" name="jedan" gid="242" x="149.818" y="728.364" width="64" height="64"/>
+  <object id="2" name="dva" gid="243" x="251.636" y="730.182" width="64" height="64"/>
+  <object id="3" name="tri" gid="244" x="344.364" y="730.182" width="64" height="64"/>
+  <object id="4" name="cetiri" gid="245" x="449.818" y="733.818" width="64" height="64"/>
+  <object id="5" name="pet" gid="246" x="557.091" y="730.182" width="64" height="64"/>
+  <object id="6" name="sest" gid="247" x="653.455" y="733.818" width="64" height="64"/>
+  <object id="7" name="sedam" gid="248" x="758.909" y="732" width="64" height="64"/>
+  <object id="8" name="osam" gid="249" x="857.091" y="737.455" width="64" height="64"/>
+  <object id="9" name="devet" gid="251" x="960.727" y="737.455" width="64" height="64"/>
+  <object id="10" name="nula" gid="250" x="1069.82" y="737.455" width="64" height="64"/>
+ </objectgroup>
+</map>
