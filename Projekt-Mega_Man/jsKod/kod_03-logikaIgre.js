@@ -198,14 +198,9 @@ function Projekt_logika1() {
               break // ne može pucat dok se penje i silazi niz skale
             }
             else if(!Postavke.GlavniLik.penjanje_skale){ //pucanje kad lik ne dira skale
-              if(Postavke.GlavniLik.velocity_x >= 0){
-                Postavke.GlavniLik.puca(metci[i],"desno");
-              }
-              else{
-                Postavke.GlavniLik.puca(metci[i],"lijevo");
-              }
+              Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
             }
-            else{
+            else{ //pucanje na skalama
               if (SENSING.left.active){
                 Postavke.GlavniLik.smjer = "lijevo";
               }
@@ -473,12 +468,7 @@ function Projekt_logika2() {
             break // ne može pucat dok se penje i silazi niz skale
           }
           else if(!Postavke.GlavniLik.penjanje_skale){ //pucanje kad lik ne dira skale
-            if(Postavke.GlavniLik.velocity_x >= 0){
-              Postavke.GlavniLik.puca(metci[i],"desno");
-            }
-            else{
-              Postavke.GlavniLik.puca(metci[i],"lijevo");
-            }
+              Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
           }
           else{
             if (SENSING.left.active){
@@ -784,12 +774,7 @@ function Projekt_logika3() {
             break // ne može pucat dok se penje i silazi niz skale
           }
           else if(!Postavke.GlavniLik.penjanje_skale){ //pucanje kad lik ne dira skale
-            if(Postavke.GlavniLik.velocity_x >= 0){
-              Postavke.GlavniLik.puca(metci[i],"desno");
-            }
-            else{
-              Postavke.GlavniLik.puca(metci[i],"lijevo");
-            }
+            Postavke.GlavniLik.puca(metci[i],Postavke.GlavniLik.smjer);
           }
           else{
             if (SENSING.left.active){
