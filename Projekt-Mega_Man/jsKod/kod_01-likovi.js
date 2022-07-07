@@ -351,7 +351,7 @@ class siljci extends Item{
     this.value = 100;
     this.sirina = 44;
     this.visina = this.height;
-    this.okvir = true;
+    this.okvir = false;
   }
   start(x,y){
     this.x = x;
@@ -770,7 +770,6 @@ class SniperJoe extends Lik{
     this.stojid = false;
     this.pucanjel = false;
     this.pucanjed = false;
-    this.okvir = true;
     this.gravity = 1.2;
     this.friction = 0.8;
     this.height = 64;

@@ -572,7 +572,7 @@ function setup_gameover(){
     	for(let j = 0;j < brojevi.length ; j++){
         if(niz[i] === brojevi[j]){
             brojevi_staticka[j] = new broj(GAME.getSpriteLayer(brojevi_string[j]));
-            brojevi_staticka[j].start(11*64 + i*64,5*64);
+            brojevi_staticka[j].start(6*64 + i*64,4*64);
             GAME.addSprite(brojevi_staticka[j]);
         }
       }

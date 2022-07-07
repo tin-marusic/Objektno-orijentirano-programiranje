@@ -76,7 +76,7 @@ function setupEnv_main() {
   SENSING = new Sensing();
   DISPLAY = new Display(canvasGame);
   GAME = new Game();
-  ENGINE = new Engine(1000 / 30, render_main, update_main);
+  ENGINE = new Engine(31, render_main, update_main);
 
   ///////////////////
   //? INITIALIZE ////

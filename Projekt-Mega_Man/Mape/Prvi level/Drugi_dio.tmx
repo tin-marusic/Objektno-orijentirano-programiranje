@@ -69,145 +69,142 @@
  <tileset firstgid="22" name="Platforme" tilewidth="64" tileheight="64" spacing="2" tilecount="2" columns="2">
   <image source="platforme.png" width="130" height="64"/>
  </tileset>
- <tileset firstgid="24" name="šiljci" tilewidth="64" tileheight="64" tilecount="1" columns="1">
-  <image source="platforma_šiljci.png" width="64" height="64"/>
- </tileset>
- <tileset firstgid="25" name="skale" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="24" name="skale" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skale.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="26" name="skok_igrac" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="25" name="skok_igrac" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skok-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="27" name="skok2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="26" name="skok2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skok_3-removebg-preview.png" width="64" height="65"/>
  </tileset>
- <tileset firstgid="28" name="skok_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="27" name="skok_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skok_1desno.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="29" name="skok1_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="28" name="skok1_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skok_3desno.png" width="64" height="65"/>
  </tileset>
- <tileset firstgid="30" name="skale_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="29" name="skale_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skale_1-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="31" name="skale_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="30" name="skale_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skale_2-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="32" name="skale_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="31" name="skale_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skale_3-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="33" name="skale_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="32" name="skale_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="skale_4-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="34" name="metak" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+ <tileset firstgid="33" name="metak" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="metak-removebg-preview.png" width="32" height="32"/>
  </tileset>
- <tileset firstgid="35" name="pucanje_livo_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="34" name="pucanje_livo_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="1-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="36" name="pucanje_livo_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="35" name="pucanje_livo_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="2-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="37" name="pucanje_livo_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="36" name="pucanje_livo_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="3-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="38" name="pucanje_livo_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="37" name="pucanje_livo_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="4-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="39" name="pucanje_livo_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="38" name="pucanje_livo_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="5-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="40" name="pucanje_livo_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="39" name="pucanje_livo_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="6-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="41" name="pucanje_livo_7" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="40" name="pucanje_livo_7" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="7-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="42" name="pucanje_livo_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="41" name="pucanje_livo_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="8-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="43" name="pucanje_livo_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="42" name="pucanje_livo_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="9-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="44" name="pucanje_desno_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="43" name="pucanje_desno_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="1_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="45" name="pucanje_desno_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="44" name="pucanje_desno_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="2_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="46" name="pucanje_desno_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="45" name="pucanje_desno_3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="3_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="47" name="pucanje_desno_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="46" name="pucanje_desno_4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="4_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="48" name="pucanje_desno_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="47" name="pucanje_desno_5" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="5_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="49" name="pucanje_desno_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="48" name="pucanje_desno_6" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="6_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="50" name="pucanje_desno_7" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="49" name="pucanje_desno_7" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="7_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="51" name="pucanje_desno_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="50" name="pucanje_desno_8" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="8_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="52" name="pucanje_desno_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="51" name="pucanje_desno_9" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="9_desno-pucaje.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="53" name="stajanje_livo" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="52" name="stajanje_livo" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="osnovno-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="54" name="stajanje_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="53" name="stajanje_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="osnovno_desno-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="55" name="pucanje_livo" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="54" name="pucanje_livo" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="stoji_pucanje-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="56" name="pucanje_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="55" name="pucanje_desno" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="stoji_desno-pucanje-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="57" name="pozadina_crna" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="56" name="pozadina_crna" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="black.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="58" name="blader1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="57" name="blader1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="blader1-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="59" name="blader2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="58" name="blader2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="blader2-removebg-preview.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="60" name="blader_l1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="59" name="blader_l1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="blader_l1.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="61" name="blader_l2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="60" name="blader_l2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="blader_l2.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="62" name="batery_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="61" name="batery_1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="batery_1.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="63" name="batery_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="62" name="batery_2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="batery_2.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="64" name="coin" tilewidth="20" tileheight="20" tilecount="1" columns="1">
+ <tileset firstgid="63" name="coin" tilewidth="20" tileheight="20" tilecount="1" columns="1">
   <image source="coin1.png" width="20" height="20"/>
  </tileset>
- <tileset firstgid="65" name="blaster1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="64" name="blaster1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="bd1.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="66" name="blaster2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="65" name="blaster2" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="bd2.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="67" name="blaster3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="66" name="blaster3" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="bd3.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="68" name="blaster4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+ <tileset firstgid="67" name="blaster4" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="bd4.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="69" name="bmetak" tilewidth="18" tileheight="18" tilecount="1" columns="1">
+ <tileset firstgid="68" name="bmetak" tilewidth="18" tileheight="18" tilecount="1" columns="1">
   <image source="metak_blaster.png" width="18" height="18"/>
  </tileset>
- <tileset firstgid="70" name="health_coin" tilewidth="16" tileheight="16" tilecount="1" columns="1">
+ <tileset firstgid="69" name="health_coin" tilewidth="16" tileheight="16" tilecount="1" columns="1">
   <image source="health_coin.png" width="16" height="16"/>
  </tileset>
  <layer id="3" name="Pozadina" width="20" height="16">
@@ -227,7 +224,7 @@
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
 11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,11,0,57,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,11,0,56,0
 </data>
  </layer>
  <layer id="4" name="Platforme" width="20" height="16">
@@ -254,38 +251,37 @@
   <properties>
    <property name="class" value="items"/>
   </properties>
-  <object id="1" name="skale" gid="25" x="256" y="516" width="64" height="64"/>
-  <object id="2" name="siljci" gid="24" x="194" y="516" width="64" height="64"/>
-  <object id="5" name="metak1" gid="34" x="1166" y="180" width="32" height="32"/>
-  <object id="6" name="metak3" gid="34" x="1104" y="184" width="32" height="32"/>
-  <object id="7" name="metak2" gid="34" x="1036" y="182" width="32" height="32"/>
-  <object id="9" name="skale_gornje" gid="25" x="322" y="516" width="64" height="64"/>
-  <object id="10" name="metak4" gid="34" x="1228" y="180" width="32" height="32"/>
-  <object id="11" name="metak5" gid="34" x="978" y="176" width="32" height="32"/>
-  <object id="13" name="skale_donje" gid="25" x="388.264" y="515.393" width="64" height="64"/>
+  <object id="1" name="skale" gid="24" x="256" y="516" width="64" height="64"/>
+  <object id="5" name="metak1" gid="33" x="1166" y="180" width="32" height="32"/>
+  <object id="6" name="metak3" gid="33" x="1104" y="184" width="32" height="32"/>
+  <object id="7" name="metak2" gid="33" x="1036" y="182" width="32" height="32"/>
+  <object id="9" name="skale_gornje" gid="24" x="322" y="516" width="64" height="64"/>
+  <object id="10" name="metak4" gid="33" x="1228" y="180" width="32" height="32"/>
+  <object id="11" name="metak5" gid="33" x="978" y="176" width="32" height="32"/>
+  <object id="13" name="skale_donje" gid="24" x="388.264" y="515.393" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="coins">
   <properties>
    <property name="class" value="coins"/>
   </properties>
-  <object id="14" name="coin1" gid="64" x="608.671" y="500.608" width="20" height="20"/>
-  <object id="15" name="coin4" gid="64" x="610.475" y="525.86" width="20" height="20"/>
-  <object id="16" name="coin2" gid="64" x="679.016" y="506.019" width="20" height="20"/>
-  <object id="17" name="coin5" gid="64" x="673.605" y="531.271" width="20" height="20"/>
-  <object id="18" name="coin3" gid="64" x="752.968" y="513.234" width="20" height="20"/>
-  <object id="19" name="coin6" gid="64" x="738.538" y="536.682" width="20" height="20"/>
-  <object id="26" name="hcoin" gid="70" x="341.919" y="612.242" width="16" height="16"/>
+  <object id="14" name="coin1" gid="63" x="608.671" y="500.608" width="20" height="20"/>
+  <object id="15" name="coin4" gid="63" x="610.475" y="525.86" width="20" height="20"/>
+  <object id="16" name="coin2" gid="63" x="679.016" y="506.019" width="20" height="20"/>
+  <object id="17" name="coin5" gid="63" x="673.605" y="531.271" width="20" height="20"/>
+  <object id="18" name="coin3" gid="63" x="752.968" y="513.234" width="20" height="20"/>
+  <object id="19" name="coin6" gid="63" x="738.538" y="536.682" width="20" height="20"/>
+  <object id="26" name="hcoin" gid="69" x="341.919" y="612.242" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="14" name="Blaster_metci">
   <properties>
    <property name="class" value="Blaster_metci"/>
   </properties>
-  <object id="20" name="bm1" gid="69" x="140.708" y="575.364" width="18" height="18"/>
-  <object id="21" name="bm2" gid="69" x="140.708" y="620.456" width="18" height="18"/>
-  <object id="22" name="bm3" gid="69" x="203.837" y="571.756" width="18" height="18"/>
-  <object id="23" name="bm4" gid="69" x="203.837" y="609.634" width="18" height="18"/>
-  <object id="24" name="bm6" gid="69" x="266.967" y="551.916" width="18" height="18"/>
-  <object id="25" name="bm5" gid="69" x="266.967" y="615.045" width="18" height="18"/>
+  <object id="20" name="bm1" gid="68" x="140.708" y="575.364" width="18" height="18"/>
+  <object id="21" name="bm2" gid="68" x="140.708" y="620.456" width="18" height="18"/>
+  <object id="22" name="bm3" gid="68" x="203.837" y="571.756" width="18" height="18"/>
+  <object id="23" name="bm4" gid="68" x="203.837" y="609.634" width="18" height="18"/>
+  <object id="24" name="bm6" gid="68" x="266.967" y="551.916" width="18" height="18"/>
+  <object id="25" name="bm5" gid="68" x="266.967" y="615.045" width="18" height="18"/>
  </objectgroup>
  <layer id="7" name="Blader" width="20" height="16">
   <properties>
@@ -297,7 +293,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,58,59,60,61,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,57,58,59,60,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -321,7 +317,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-65,66,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+64,65,66,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -344,7 +340,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-65,66,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+64,65,66,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -367,7 +363,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-65,66,67,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+64,65,66,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -385,7 +381,7 @@
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-62,63,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+61,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -408,7 +404,7 @@
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-62,63,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+61,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -431,7 +427,7 @@
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-62,63,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+61,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -454,11 +450,11 @@
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-12,13,14,15,16,17,18,19,20,21,26,27,28,29,30,31,33,32,0,0,
+12,13,14,15,16,17,18,19,20,21,25,26,27,28,29,30,32,31,0,0,
 1,2,3,4,5,6,7,8,9,10,0,0,0,0,0,0,0,0,0,0,
-26,26,26,54,53,56,55,0,0,0,0,0,0,0,0,0,0,0,0,0,
-35,36,37,38,39,40,41,42,43,0,0,0,0,0,0,0,0,0,0,0,
-44,45,46,47,48,49,50,51,52,0,0,0,0,0,0,0,0,0,0,0,
+25,25,25,53,52,55,54,0,0,0,0,0,0,0,0,0,0,0,0,0,
+34,35,36,37,38,39,40,41,42,0,0,0,0,0,0,0,0,0,0,0,
+43,44,45,46,47,48,49,50,51,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -473,7 +469,7 @@
  </layer>
  <layer id="6" name="Crna pozadina" width="20" height="16">
   <data encoding="csv">
-57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -488,7 +484,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57,57
+56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56,56
 </data>
  </layer>
 </map>
